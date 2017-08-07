@@ -1,0 +1,14 @@
+{
+  "name": "wedding-invitation_server",
+  "version": "1.0.0",
+  "description": "wedding invitation server",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "z",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.3.0"
+  }
+}
