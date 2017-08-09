@@ -1,8 +1,12 @@
 const port = 3000;
 const Koa = require('koa');
 const Ctrl = require('koa-route');
+const koaBody = require('koa-body');
 const app = new Koa();
 const FileManager = require('./module/file_manager.js');
+
+// body-parser
+app.use(koaBody())
 
 // 错误处理
 app.use(async (ctx, next) => {
@@ -19,21 +23,32 @@ app.use(async (ctx, next) => {
     }
 })
 
+// api
 app.use(Ctrl.get('/api/item_list', async (ctx) => {
-    ctx.set('Cache-Control', 'no-cache');
     ctx.body = await FileManager.getItemList();
 }))
 
-app.use(Ctrl.get('/api/add_item', async (ctx) => {
-    let query = ctx.query;
-    let name = query.name,
-        phone = query.phone,
-        attend = query.attend;
+app.use(Ctrl.post('/api/add_item', async (ctx) => {
+    let param = ctx.request.body;
+    let name = param.name,
+        phone = param.phone,
+        attend = param.attend;
     ctx.body = await FileManager.addItem(name, phone, attend);
 }))
 
+app.use(Ctrl.get('/api/page/:pageSize/:pageIndex', async (ctx, pageSize, pageIndex) => {
+    console.dir('p:' + pageSize + ',' + pageIndex)
+}))
+
+app.use(Ctrl.post('/api/test/post', ctx => {
+    console.dir(ctx.request.body);
+    console.log(ctx.method)
+    ctx.body = ctx.method;
+}))
+
+// no match
 app.use(async (ctx) => {
-    ctx.body = '404'
+    ctx.throw(404,'未找到页面')
 })
 
 app.listen(port, () => {
