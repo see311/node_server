@@ -2,7 +2,6 @@
 <html>
 
 <head>
-  <title>结婚请柬</title>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -13,13 +12,38 @@
   <meta name="x5-page-mode" content="app" />
   <meta name="Robots" content="all" />
   <meta content="telephone=no" name="format-detection" />
+  <title>结婚请柬</title>
+
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
 </head>
 
 <body>
+  <div class="loadingCover">
+    <div class="mask"></div>
+    <div class="heartShaped"></div>
+    <div class="textMagic" data-word="Charging">
+      Charging...
+      <div class="white"></div>
+    </div>
+  </div>
   <div class="stage"></div>
-  <p>当前时间：
-    <%= currentTime %>
-  </p>
+
+  <script src="/js/jquery.min.js"></script>
+  <script>
+    Pace.on('done', function () {
+      console.log('done')
+      $('.loadingCover .mask').css('opacity', '0')
+      $('.loadingCover .textMagic').attr('data-word', 'Tap to start!').text('Tap to start!')
+      $('.loadingCover')
+        .one('webkitAnimationEnd', function () {
+          $(this).hide()
+        })
+        .one('click', function (e) {
+          $(this).addClass('fadeScaleOut')
+        })
+    })
+  </script>
 </body>
 
 </html>
