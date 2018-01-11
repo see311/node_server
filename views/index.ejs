@@ -14,35 +14,98 @@
   <meta content="telephone=no" name="format-detection" />
   <title>结婚请柬</title>
 
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/loading.css">
+  <link rel="stylesheet" href="/css/stage.css">
+
   <script src="/js/pace.min.js"></script>
 </head>
 
 <body>
-  <div class="loadingCover">
-    <div class="mask"></div>
-    <div class="heartShaped"></div>
-    <div class="textMagic" data-word="Charging">
-      Charging...
-      <div class="white"></div>
+  <div class="center">
+    <div class="loadingCover">
+      <div class="mask"></div>
+      <div class="heartShaped"></div>
+      <div class="textMagic" data-word="Charging">
+        Charging...
+      </div>
+    </div>
+    <div class="stage hide">
+      <div class="tell">
+        <div class="rect">
+          <div class="phase p1">
+            <img src="/img/rl.jpg" alt="" style="width:100%;top:30px;left:0;">
+            <img src="/img/baby_g.png" alt="" class="dropBabyG">
+            <img src="/img/baby_b.png" alt="" class="dropBabyB">
+          </div>
+        </div>
+        <div class="aside">
+          <p></p>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="stage"></div>
 
   <script src="/js/jquery.min.js"></script>
+  <script>
+    var fn = {
+      rNum: function (min, max) {
+        if (arguments.length == 1) {
+          max = min;
+          return Math.floor(Math.random() * (max + 1));
+        } else {
+          return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+      },
+      typing: function (obj, str, speed, callback) {
+        obj.text('');
+        !speed && (speed = 160);
+        if (typeof speed == "function") {
+          callback = speed;
+          speed = 160;
+        }
+        var _str = '';
+        var counter = 1;
+        var timer = setInterval(function () {
+          _str += str.substring(counter - 1, counter);
+          counter++;
+          obj.text(_str);
+          if (counter == str.length) {
+            clearInterval(timer);
+            timer = null;
+            !!callback && callback();
+          }
+        }, speed);
+      }
+    }
+  </script>
   <script>
     Pace.on('done', function () {
       console.log('done')
       $('.loadingCover .mask').css('opacity', '0')
       $('.loadingCover .textMagic').attr('data-word', 'Tap to start!').text('Tap to start!')
       $('.loadingCover')
+        .one('click', function (e) {
+          $(this).addClass('fadeScaleOut')
+          $('.stage')
+            .addClass('fadeScaleIn')
+            .one('webkitAnimationEnd', function () {
+              act_p1()
+            })
+        })
         .one('webkitAnimationEnd', function () {
           $(this).hide()
         })
-        .one('click', function (e) {
-          $(this).addClass('fadeScaleOut')
-        })
     })
+
+    function act_p1() {
+      fn.typing($('.stage .aside p'), '1989年10月14日，我俩出生了……', function () {
+        // setTimeout(() => {
+        //   fn.typing($('.stage .aside p'), '从此，我俩走上了不同的道路……')
+        // }, 800);
+      })
+    }
   </script>
 </body>
 

@@ -1,11 +1,23 @@
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   width: 100%;
   height: 100%;
   overflow: hidden;
+}
+
+.center {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: deeppink;
+  background: repeating-linear-gradient(45deg, #CC9999, #CC9999 40px, #CCCCCC 0, #CCCCCC 80px)
+}
+
+@media screen and (min-width: 640px) {
+  .center {
+    width: 640px;
+    margin: 0 auto;
+  }
 }
 
 .mask {
@@ -20,7 +32,9 @@ body {
 .loadingCover {
   width: 100%;
   height: 100%;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .loadingCover .mask {
@@ -39,6 +53,7 @@ body {
   text-align: center;
   color: white;
   font-size: 12px;
+  box-shadow: 0 0 20px 2px rgb(255, 35, 76);
   animation: heartBeat 1.4s ease-in-out infinite both;
   -webkit-animation: heartBeat 1.4s ease-in-out infinite both;
 }
@@ -84,6 +99,7 @@ body {
   border-radius: 50%;
   background: rgb(255, 35, 76);
   z-index: -1;
+  box-shadow: 0 0 20px 2px rgb(255, 35, 76);
 }
 
 .heartShaped:after {
@@ -101,17 +117,6 @@ body {
   white-space: nowrap;
 }
 
-.white {
-  position: absolute;
-  left: 0;
-  top: 15px;
-  width: 100%;
-  height: 3px;
-  background: #fff;
-  z-index: 4;
-  animation: whiteMove 3s ease-out infinite;
-}
-
 .textMagic:before {
   content: attr(data-word);
   position: absolute;
@@ -122,6 +127,8 @@ body {
   overflow: hidden;
   z-index: 2;
   animation: redShadow 1s ease-in infinite;
+  -webkit-animation: redShadow 1s ease-in infinite;
+  filter: contrast(200%);
   -webkit-filter: contrast(200%);
   text-shadow: 0.1px 0 0 red;
 }
@@ -135,8 +142,9 @@ body {
   color: rgba(0, 0, 0, .8);
   overflow: hidden;
   z-index: 3;
-  background: rgba(255, 255, 255, .9);
   animation: redHeight 1.5s ease-out infinite;
+  -webkit-animation: redHeight 1.5s ease-out infinite;
+  filter: contrast(200%);
   -webkit-filter: contrast(200%);
 }
 
@@ -152,7 +160,43 @@ body {
   }
 }
 
+@-webkit-keyframes redShadow {
+  20% {
+    height: 32px;
+  }
+  60% {
+    height: 6px;
+  }
+  100% {
+    height: 42px;
+  }
+}
+
 @keyframes redHeight {
+  20% {
+    height: 42px;
+  }
+  35% {
+    height: 12px;
+  }
+  50% {
+    height: 40px;
+  }
+  60% {
+    height: 20px;
+  }
+  70% {
+    height: 34px;
+  }
+  80% {
+    height: 22px;
+  }
+  100% {
+    height: 0px;
+  }
+}
+
+@-webkit-keyframes redHeight {
   20% {
     height: 42px;
   }
@@ -191,16 +235,43 @@ body {
   }
 }
 
-.fadeScaleOut{
+@-webkit-keyframes whiteMove {
+  8% {
+    top: 38px;
+  }
+  10% {
+    top: 8px;
+  }
+  12% {
+    top: 42px;
+  }
+  99% {
+    top: 36px;
+  }
+}
+
+.fadeScaleOut {
   animation: fadeScaleOut 1s ease-out both;
 }
-@keyframes fadeScaleOut{
-  0%{
+
+@keyframes fadeScaleOut {
+  0% {
     opacity: 1;
     transform: scale(1);
   }
-  100%{
+  100% {
     opacity: 0;
     transform: scale(2);
+  }
+}
+
+@-webkit-keyframes fadeScaleOut {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(2);
   }
 }
