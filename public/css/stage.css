@@ -32,7 +32,7 @@
   position: relative;
 }
 
-.phase img{
+.phase img {
   position: absolute;
 }
 
@@ -66,6 +66,7 @@
     transform: scale(1);
   }
 }
+
 @-webkit-keyframes fadeScaleIn {
   0% {
     opacity: 0;
@@ -81,12 +82,94 @@
   }
 }
 
-.dropBabyG{
-  animation: dropBabyG 1s linear forwards both;
+.dropBabyG,
+.dropBabyB {
+  top: -300px;
+  left: 100px;
 }
 
-@keyframes dropBabyG{
-  
+.action .dropBabyB {
+  transform: rotate3d(0, 0, 1, -30deg);
+  animation: dropBabyB 2s ease-in-out .8s both;
+  -webkit-animation: dropBabyB 2s ease-in-out .8s both;
+}
+
+@keyframes dropBabyB {
+  0% {
+    transform: rotate3d(0, 0, 1, -30deg);
+    top: -300px;
+    left: 100px;
+  }
+  60% {
+    transform: rotate3d(0, 0, 1, -30deg) scale3d(1, 1, 1);
+    top: 130px;
+    left: 100px;
+  }
+  65%,95%{
+    transform: rotate3d(0, 0, 1, -30deg) scale3d(1, 0.8, 1);
+  }
+  70% {
+    transform: rotate3d(0, 0, 1, -30deg) scale3d(1, 1, 1);
+    top: 110px;
+    left: 85px;
+  }
+  80% {
+    transform: rotate3d(0, 0, 1, -30deg) scale3d(1, 0.8, 1);
+    top: 130px;
+    left: 70px;
+  }
+  90% {
+    transform: rotate3d(0, 0, 1, -30deg) scale3d(1, 1, 1);
+    top: 110px;
+    left: 55px;
+  }
+  100% {
+    transform: rotate3d(0, 0, 1, -30deg) scale3d(1, 1, 1);
+    top: 130px;
+    left: 40px;
+  }
+}
+
+.action .dropBabyG {
+  transform: rotate3d(0, 0, 1, 30deg);
+  animation: dropBabyG 2s ease-in-out 1.6s both;
+  -webkit-animation: dropBabyG 2s ease-in-out 1.6s both;
+}
+
+@keyframes dropBabyG {
+  0% {
+    transform: rotate3d(0, 0, 1, 30deg);
+    top: -300px;
+    left: 100px;
+  }
+  60% {
+    transform: rotate3d(0, 0, 1, 30deg) scale3d(1, 1, 1);
+    top: 130px;
+    left: 100px;
+  }
+  65%,95%{
+    transform: rotate3d(0, 0, 1, 30deg) scale3d(1, 0.8, 1);
+  }
+  70% {
+    transform: rotate3d(0, 0, 1, 30deg) scale3d(1, 1, 1);
+    top: 110px;
+    left: 115px;
+  }
+  80% {
+    transform: rotate3d(0, 0, 1, 30deg) scale3d(1, 0.8, 1);
+    top: 130px;
+    left: 130px;
+  }
+  90% {
+    transform: rotate3d(0, 0, 1, 30deg) scale3d(1, 1, 1);
+    top: 110px;
+    left: 145px;
+  }
+  100% {
+    transform: rotate3d(0, 0, 1, 30deg) scale3d(1, 1, 1);
+    top: 130px;
+    left: 160px;
+  }
 }
 
 @media screen and (min-width:319px) {
