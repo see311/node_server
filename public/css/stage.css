@@ -24,12 +24,20 @@
   box-shadow: 0 0 5px #fff;
   margin: 0 auto;
   overflow: hidden;
+  position: relative;
 }
 
 .phase {
   width: 100%;
   height: 100%;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.phase.action {
+  display: block;
 }
 
 .phase img {
@@ -45,6 +53,7 @@
 .aside p {
   font-size: 18px;
   font-weight: bold;
+  padding: 0 20px;
 }
 
 .fadeScaleIn {
@@ -105,7 +114,8 @@
     top: 130px;
     left: 100px;
   }
-  15%,45%{
+  15%,
+  45% {
     transform: rotate3d(0, 0, 1, -30deg) scale3d(1, 0.8, 1);
   }
   20% {
@@ -123,12 +133,13 @@
     top: 110px;
     left: 55px;
   }
-  50%,85% {
+  50%,
+  85% {
     transform: rotate3d(0, 0, 1, -30deg) scale3d(1, 1, 1);
     top: 130px;
     left: 40px;
   }
-  100%{
+  100% {
     top: 150px;
     left: -100px;
   }
@@ -151,7 +162,8 @@
     top: 130px;
     left: 100px;
   }
-  15%,45%{
+  15%,
+  45% {
     transform: rotate3d(0, 0, 1, 30deg) scale3d(1, 0.8, 1);
   }
   20% {
@@ -169,7 +181,8 @@
     top: 110px;
     left: 145px;
   }
-  50%,85%{
+  50%,
+  85% {
     transform: rotate3d(0, 0, 1, 30deg) scale3d(1, 1, 1);
     top: 130px;
     left: 160px;
@@ -178,6 +191,85 @@
     top: 150px;
     left: 300px;
   }
+}
+
+.dx50 {
+  opacity: 0;
+}
+
+.action .dx50 {
+  animation: fade .8s linear both;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.heartShapedWrap {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.action .heartShapedWrap {
+  animation: fade8 .8s linear 3.8s both;
+}
+
+@keyframes fade8 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: .8;
+  }
+}
+
+.stage .heartShaped {
+  top: 50%;
+  width: 120px;
+  height: 120px;
+  animation: heartBeat 1.4s ease-in-out infinite both;
+}
+
+.stage .heartShaped::before,
+.stage .heartShaped::after {
+  width: 120px;
+  height: 120px;
+}
+
+.p3 {
+  overflow: hidden;
+  transform: translate3d(-101%, 0, 0);
+}
+
+.p3.action {
+  animation: LtoR .8s ease-in both;
+}
+
+@keyframes LtoR {
+  0% {
+    transform: translate3d(-101%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.imgBook{
+  opacity: 0;
+  z-index: 99;
+}
+
+.action .imgBook{
+   animation: fade .8s linear 3s both;
 }
 
 @media screen and (min-width:319px) {

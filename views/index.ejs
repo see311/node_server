@@ -39,6 +39,16 @@
             <img src="/img/baby_g.png" alt="" class="dropBabyG">
             <img src="/img/baby_b.png" alt="" class="dropBabyB">
           </div>
+          <div class="phase p2">
+            <img src="/img/dx50.jpg" style="width:100%" class="dx50">
+            <div class="heartShapedWrap">
+              <div class="heartShaped"></div>
+            </div>
+          </div>
+          <div class="phase p3">
+            <img src="/img/bookp.jpg" alt="">
+            <img src="/img/book.jpg" alt="" class="imgBook">
+          </div>
         </div>
         <div class="aside">
           <p></p>
@@ -71,7 +81,7 @@
           _str += str.substring(counter - 1, counter);
           counter++;
           obj.text(_str);
-          if (counter == str.length) {
+          if (counter > str.length) {
             clearInterval(timer);
             timer = null;
             !!callback && callback();
@@ -103,7 +113,35 @@
       $('.p1').addClass('action')
       fn.typing($('.stage .aside p'), '1989年10月14日，我俩出生了……', function () {
         setTimeout(() => {
-          fn.typing($('.stage .aside p'), '从此，我俩走上了不同的道路……')
+          fn.typing($('.stage .aside p'), '从此，我俩走上了不同的道路……', function () {
+            setTimeout(() => {
+              $('.p1').removeClass('action')
+              act_p2()
+            }, 1400);
+          })
+        }, 1000);
+      })
+    }
+
+    function act_p2() {
+      $('.p2').addClass('action')
+      fn.typing($('.stage .aside p'), '直到有一天（2014.3），我在咸鱼上卖二手播放器……', function () {
+        setTimeout(() => {
+          fn.typing($('.stage .aside p'), '通过DX50的介绍，我俩成功相识摩擦出爱的火花（计划通 (￣y▽￣)）', function () {
+            setTimeout(() => {
+              $('.p2').removeClass('action')
+              act_p3()
+            }, 1400);
+          })
+        }, 1000);
+      })
+    }
+
+    function act_p3() {
+      $('.p3').addClass('action')
+      fn.typing($('.stage .aside p'), '经过3年半的马拉松，终于迎来了新的开始', function () {
+        setTimeout(() => {
+          fn.typing($('.stage .aside p'), '2017.9.6我们领证啦！♥')
         }, 1000);
       })
     }
