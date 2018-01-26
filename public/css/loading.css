@@ -10,7 +10,7 @@ body {
   height: 100%;
   position: relative;
   background: deeppink;
-  background: repeating-linear-gradient(45deg, #CC9999, #CC9999 40px, #CCCCCC 0, #CCCCCC 80px)
+  background: repeating-linear-gradient(45deg, #ec9f9f, #ec9f9f 40px, #fbfbfb 0, #d4d4d4 80px)
 }
 
 @media screen and (min-width: 640px) {
@@ -35,6 +35,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 99999;
 }
 
 .loadingCover .mask {
@@ -107,7 +108,7 @@ body {
   left: 0;
 }
 
-.textMagic {
+.textMagic,.textMagic2 {
   position: absolute;
   top: 70%;
   left: 50%;
@@ -117,7 +118,7 @@ body {
   white-space: nowrap;
 }
 
-.textMagic:before {
+.textMagic:before,.textMagic2::before {
   content: attr(data-word);
   position: absolute;
   top: 0;
@@ -133,7 +134,7 @@ body {
   text-shadow: 0.1px 0 0 red;
 }
 
-.textMagic:after {
+.textMagic:after,.textMagic2::after {
   content: attr(data-word);
   position: absolute;
   top: 0;
@@ -217,36 +218,6 @@ body {
   }
   100% {
     height: 0px;
-  }
-}
-
-@keyframes whiteMove {
-  8% {
-    top: 38px;
-  }
-  10% {
-    top: 8px;
-  }
-  12% {
-    top: 42px;
-  }
-  99% {
-    top: 36px;
-  }
-}
-
-@-webkit-keyframes whiteMove {
-  8% {
-    top: 38px;
-  }
-  10% {
-    top: 8px;
-  }
-  12% {
-    top: 42px;
-  }
-  99% {
-    top: 36px;
   }
 }
 

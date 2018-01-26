@@ -14,12 +14,15 @@
   <meta content="telephone=no" name="format-detection" />
   <title>结婚请柬</title>
 
+  <script src="/js/pace.min.js"></script>
+
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/loading.css">
   <link rel="stylesheet" href="/css/stage.css">
-
-  <script src="/js/pace.min.js"></script>
+  <link rel="stylesheet" href="/css/swiper.min.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/swiper.min.js"></script>
 </head>
 
 <body>
@@ -30,9 +33,13 @@
       <div class="textMagic" data-word="Charging">
         Charging...
       </div>
+      <div style="font-size:20px;font-weight:bold;">2018.4.15 河南.安阳</div>
     </div>
     <div class="stage hide">
       <div class="tell">
+        <div class="tobeWrap">
+          <img src="/img/tobe.png" style="position:absolute;right:0;bottom:150px">
+        </div>
         <div class="rect">
           <div class="phase p1">
             <img src="/img/rl.jpg" alt="" style="width:100%;top:30px;left:0;">
@@ -46,18 +53,55 @@
             </div>
           </div>
           <div class="phase p3">
-            <img src="/img/bookp.jpg" alt="">
-            <img src="/img/book.jpg" alt="" class="imgBook">
+            <img src="/img/bookp.jpg">
+            <img src="/img/book.jpg" class="imgBook">
+            <img src="/img/road.jpg" class="imgRoad">
           </div>
         </div>
         <div class="aside">
           <p></p>
         </div>
       </div>
+      <div class="photo">
+        <div class="swipeMask">
+          <p class="circle"></p>
+        </div>
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="/img/p1.jpg">
+            </div>
+            <div class="swiper-slide">
+              <img src="/img/p2.jpg">
+            </div>
+            <div class="swiper-slide">
+              <img src="/img/p3.jpg">
+            </div>
+            <div class="swiper-slide">
+              <img src="/img/p4.jpg">
+            </div>
+            <div class="swiper-slide">
+              <img src="/img/p5.jpg">
+            </div>
+            <div class="swiper-slide info">
+              <div class="card">
+                <p>婚礼日期：2018年4月15日 星期天</p>
+                <p>婚礼地址：河南省安阳市殷都区王邵村</p>
+                <div style="position:relative;" class="map">
+                  <a href="https://map.baidu.com/mobile/webapp/place/detail/qt=ninf&wd=%E5%AE%89%E9%98%B3%E5%B8%82%20%E7%8E%8B%E9%82%B5%E6%9D%91&c=267&searchFlag=bigBox&version=5&exptype=dep&src_from=webapp_all_bigbox&sug_forward=&src=0&uid=6113ef77bd8f61148e772760&industry=life&qid=3258085287250447703/showall=1&pos=0&da_ref=listclk&da_qrtp=11&da_adtp=&da_log=&da_adquery=%E5%AE%89%E9%98%B3%E5%B8%82%20%E7%8E%8B%E9%82%B5%E6%9D%91&da_adtitle=%E7%8E%8B%E9%82%B5%E6%9D%91&da_adindus=%E8%A1%8C%E6%94%BF%E5%9C%B0%E6%A0%87;%E6%9D%91%E5%BA%84&detail_from=list&universalLinkCbkTag=1#place/detail/qt=ninf&wd=%E5%AE%89%E9%98%B3%E5%B8%82%20%E7%8E%8B%E9%82%B5%E6%9D%91&c=267&searchFlag=bigBox&version=5&exptype=dep&src_from=webapp_all_bigbox&src=0&uid=6113ef77bd8f61148e772760&industry=life&qid=3258085287250447703/showall=1&pos=0&da_ref=listclk&da_qrtp=11&da_adquery=%E5%AE%89%E9%98%B3%E5%B8%82%20%E7%8E%8B%E9%82%B5%E6%9D%91&da_adtitle=%E7%8E%8B%E9%82%B5%E6%9D%91&da_adindus=%E8%A1%8C%E6%94%BF%E5%9C%B0%E6%A0%87%3B%E6%9D%91%E5%BA%84&detail_from=list&universalLinkCbkTag=1&vt=map">
+                    <p>导航</p>
+                    <img src="/img/map.png" style="width:100%">
+                  </a>
+                </div>
+                <p style="text-align:center">来了就管吃管住！</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <script src="/js/jquery.min.js"></script>
   <script>
     var fn = {
       rNum: function (min, max) {
@@ -117,7 +161,7 @@
             setTimeout(() => {
               $('.p1').removeClass('action')
               act_p2()
-            }, 1400);
+            }, 800);
           })
         }, 1000);
       })
@@ -131,9 +175,9 @@
             setTimeout(() => {
               $('.p2').removeClass('action')
               act_p3()
-            }, 1400);
+            }, 1000);
           })
-        }, 1000);
+        }, 400);
       })
     }
 
@@ -141,8 +185,82 @@
       $('.p3').addClass('action')
       fn.typing($('.stage .aside p'), '经过3年半的马拉松，终于迎来了新的开始', function () {
         setTimeout(() => {
-          fn.typing($('.stage .aside p'), '2017.9.6我们领证啦！♥')
-        }, 1000);
+          fn.typing($('.stage .aside p'), '2017.9.6我们领证啦！♥', function () {
+            setTimeout(() => {
+              fn.typing($('.stage .aside p'), '然后就去大理拍了婚纱照', function () {
+                setTimeout(() => {
+
+                  $('.tobeWrap').show(400).one('click', function (e) {
+                    $('.tell').hide(800, function () {
+                      $('.photo').addClass('action')
+
+                      var mySwiper = new Swiper('.swiper-container', {
+                        direction: 'vertical',
+                        mousewheel: true,
+                        watchSlidesProgress: true,
+                        on: {
+                          init: function () {
+                            this.myIndex = 0;
+                          },
+                          progress: function () {
+                            for (var i = 0; i < this.slides.length; i++) {
+                              var slide = this.slides.eq(i);
+                              var progress = this.slides[i].progress;
+                              var translate, boxShadow;
+                              translate = progress * this.height * 0.8;
+                              scale = 1 - Math.min(Math.abs(progress * 0.2), 1);
+                              if (i == this.myIndex) {
+                                slide.transform('translate3d(0,' + (translate) +
+                                  'px,0) scale(' + scale + ')');
+                                slide.css({
+                                  'z-index': 0,
+                                  'boxShadow': '0px 0px 10px rgba(0,0,0,.5)'
+                                });
+                              }
+                            }
+                          },
+                          transitionEnd: function () {
+                            $('.swipeMask').hide()
+                            this.myIndex = this.activeIndex;
+                            for (var i = 0; i < this.slides.length; i++) {
+                              var slide = this.slides.eq(i);
+                              slide.transform('');
+                              slide.css('z-index', 1);
+                            }
+                            this.mousewheel.enable();
+                          },
+                          setTransition: function (speed) {
+                            for (var i = 0; i < this.slides.length; i++) {
+                              var slide = this.slides.eq(i);
+                              slide.transition(speed + 'ms');
+                            }
+                            this.mousewheel.disable();
+                          }
+                        }
+                      });
+
+                      var startX, startY
+
+                      $('.swipeMask').one('touchstart', function (e) {
+                        console.log(e)
+                        startX = parseInt(e.originalEvent.changedTouches[0].pageX)
+                        startY = parseInt(e.originalEvent.changedTouches[0].pageY)
+                      })
+                      $('.swipeMask').one('touchend', function (e) {
+                        var endX = parseInt(e.originalEvent.changedTouches[0].pageX)
+                        var endY = parseInt(e.originalEvent.changedTouches[0].pageY)
+                        if (endY - startY < -20) {
+                          $(this).hide()
+                          mySwiper.slideNext()
+                        }
+                      })
+                    })
+                  })
+                }, 400);
+              })
+            }, 800);
+          })
+        }, 600);
       })
     }
   </script>

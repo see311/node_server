@@ -99,8 +99,8 @@
 
 .action .dropBabyB {
   transform: rotate3d(0, 0, 1, -30deg);
-  animation: dropBabyB 4s linear .8s both;
-  -webkit-animation: dropBabyB 4s linear .8s both;
+  animation: dropBabyB 3.6s linear .8s both;
+  -webkit-animation: dropBabyB 3.6s linear .8s both;
 }
 
 @keyframes dropBabyB {
@@ -109,31 +109,31 @@
     top: -300px;
     left: 100px;
   }
-  10% {
+  30% {
     transform: rotate3d(0, 0, 1, -30deg) scale3d(1, 1, 1);
     top: 130px;
     left: 100px;
   }
-  15%,
-  45% {
+  35%,
+  65% {
     transform: rotate3d(0, 0, 1, -30deg) scale3d(1, 0.8, 1);
-  }
-  20% {
-    transform: rotate3d(0, 0, 1, -30deg) scale3d(1, 1, 1);
-    top: 110px;
-    left: 85px;
-  }
-  30% {
-    transform: rotate3d(0, 0, 1, -30deg) scale3d(1, 0.8, 1);
-    top: 130px;
-    left: 70px;
   }
   40% {
     transform: rotate3d(0, 0, 1, -30deg) scale3d(1, 1, 1);
     top: 110px;
+    left: 85px;
+  }
+  50% {
+    transform: rotate3d(0, 0, 1, -30deg) scale3d(1, 0.8, 1);
+    top: 130px;
+    left: 70px;
+  }
+  60% {
+    transform: rotate3d(0, 0, 1, -30deg) scale3d(1, 1, 1);
+    top: 110px;
     left: 55px;
   }
-  50%,
+  70%,
   85% {
     transform: rotate3d(0, 0, 1, -30deg) scale3d(1, 1, 1);
     top: 130px;
@@ -147,8 +147,8 @@
 
 .action .dropBabyG {
   transform: rotate3d(0, 0, 1, 30deg);
-  animation: dropBabyG 4s linear 1.6s both;
-  -webkit-animation: dropBabyG 4s linear 1.6s both;
+  animation: dropBabyG 3.6s linear 1.6s both;
+  -webkit-animation: dropBabyG 3.6s linear 1.6s both;
 }
 
 @keyframes dropBabyG {
@@ -157,31 +157,31 @@
     top: -300px;
     left: 100px;
   }
-  10% {
+  30% {
     transform: rotate3d(0, 0, 1, 30deg) scale3d(1, 1, 1);
     top: 130px;
     left: 100px;
   }
-  15%,
-  45% {
+  35%,
+  65% {
     transform: rotate3d(0, 0, 1, 30deg) scale3d(1, 0.8, 1);
-  }
-  20% {
-    transform: rotate3d(0, 0, 1, 30deg) scale3d(1, 1, 1);
-    top: 110px;
-    left: 115px;
-  }
-  30% {
-    transform: rotate3d(0, 0, 1, 30deg) scale3d(1, 0.8, 1);
-    top: 130px;
-    left: 130px;
   }
   40% {
     transform: rotate3d(0, 0, 1, 30deg) scale3d(1, 1, 1);
     top: 110px;
+    left: 115px;
+  }
+  50% {
+    transform: rotate3d(0, 0, 1, 30deg) scale3d(1, 0.8, 1);
+    top: 130px;
+    left: 130px;
+  }
+  60% {
+    transform: rotate3d(0, 0, 1, 30deg) scale3d(1, 1, 1);
+    top: 110px;
     left: 145px;
   }
-  50%,
+  70%,
   85% {
     transform: rotate3d(0, 0, 1, 30deg) scale3d(1, 1, 1);
     top: 130px;
@@ -220,7 +220,7 @@
 }
 
 .action .heartShapedWrap {
-  animation: fade8 .8s linear 3.8s both;
+  animation: fade8 .8s linear 4.6s both;
 }
 
 @keyframes fade8 {
@@ -263,13 +263,139 @@
   }
 }
 
-.imgBook{
+.imgBook {
   opacity: 0;
   z-index: 99;
 }
 
-.action .imgBook{
-   animation: fade .8s linear 3s both;
+.action .imgBook {
+  animation: fade .8s linear 3.6s both;
+}
+
+.imgRoad {
+  height: 100%;
+  transform: translate3d(-101%, 0, 0);
+  z-index: 999;
+}
+
+.action .imgRoad {
+  animation: LtoR .8s ease-out 8s both;
+}
+
+.tobeWrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(204, 204, 204, 0.7);
+  display: none;
+  z-index: 9999;
+}
+
+.tobeWrap img {
+  animation: bounceR .8s ease-in-out infinite alternate;
+}
+
+@keyframes bounceR {
+  0% {
+    transform: translate3d(0, 0, 0)
+  }
+  100% {
+    transform: translate3d(-50px, 0, 0)
+  }
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: none;
+  z-index: 99;
+}
+
+.photo.action {
+  display: block;
+  animation: fade .8s linear both;
+}
+
+.swiper-container,
+.swiper-slide {
+  height: 100%;
+}
+
+.swiper-slide {
+  overflow: hidden;
+}
+
+.swiper-slide>img {
+  height: 100%;
+}
+
+.swipeMask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+}
+
+.swipeMask .circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, .9);
+  box-shadow: 0 0 0 8px rgba(255, 255, 255, .5);
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate3d(-50%, -50%, 0);
+  animation: swipeUp 2s ease-in-out infinite;
+}
+
+@keyframes swipeUp {
+  0% {
+    top: 55%;
+  }
+  70%,
+  100% {
+    top: 40%;
+  }
+}
+
+.info {
+  background-color: rgb(255, 248, 230);
+}
+
+.card {
+  width: 340px;
+  height: 440px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  box-shadow: 10px 10px 0 #e4e4e4;
+}
+
+.card>p {
+  font-size: 22px;
+  padding: 10px 4px;
+}
+
+.map p {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 28px;
+  text-align: center;
+  line-height: 28px;
+  font-size: 18px;
+  color: #fff;
+  background-color: rgba(78, 78, 78, 0.6);
 }
 
 @media screen and (min-width:319px) {
