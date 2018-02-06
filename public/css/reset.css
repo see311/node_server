@@ -1,5 +1,8 @@
 /*reset*/
-
+@font-face{
+  font-family: 'zhsht_light';
+  src: url('/font/zhsht_light.ttf')
+}
 body,
 div,
 dl,
@@ -40,7 +43,8 @@ nav,
 section {
   margin: 0;
   padding: 0;
-  font: 14px 'Microsoft YaHei';
+  font: 14px 'zhsht_light';
+  color:#888;
 }
 
 article,

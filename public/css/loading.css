@@ -124,7 +124,7 @@ body {
   top: 0;
   left: 0.5px;
   height: 0px;
-  color: rgba(0, 0, 0, .9);
+  color: rgba(100, 100, 100, .9);
   overflow: hidden;
   z-index: 2;
   animation: redShadow 1s ease-in infinite;
@@ -140,7 +140,7 @@ body {
   top: 0;
   left: -3px;
   height: 36px;
-  color: rgba(0, 0, 0, .8);
+  color: rgba(100, 100, 100, .8);
   overflow: hidden;
   z-index: 3;
   animation: redHeight 1.5s ease-out infinite;

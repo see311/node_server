@@ -51,7 +51,7 @@
 }
 
 .aside p {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: bold;
   padding: 0 20px;
 }
@@ -220,7 +220,7 @@
 }
 
 .action .heartShapedWrap {
-  animation: fade8 .8s linear 4.6s both;
+  animation: fade8 .8s linear 5s both;
 }
 
 @keyframes fade8 {
@@ -331,7 +331,7 @@
 }
 
 .swiper-slide>img {
-  height: 100%;
+  width: 100%;
 }
 
 .swipeMask {
@@ -371,7 +371,7 @@
 }
 
 .card {
-  width: 340px;
+  width: 320px;
   height: 440px;
   position: absolute;
   top: 50%;
