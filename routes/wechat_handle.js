@@ -5,6 +5,8 @@ var crypto = require('crypto')
 router
   .get('/', (req, res, next) => {
     let data = req.body
+    console.log(data);
+    
     let signature = data.signature,
       timestamp = data.timestamp,
       nonce = data.nonce,
