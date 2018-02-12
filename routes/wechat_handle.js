@@ -4,7 +4,7 @@ var crypto = require('crypto')
 
 router
   .get('/', (req, res, next) => {
-    let data = req.body
+    let data = req.query
     console.log(data);
     
     let signature = data.signature,
