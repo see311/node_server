@@ -15,9 +15,12 @@ router
     let hash = crypto.createHash('sha1')
     hash.update(list.join(''))
     let encode = hash.digest('hex')
-    if (encode = signature){
+    if (encode == signature){
+      console.log(echostr);
+      
       return echostr
     }else{
+      console.log('failed');
       return ''
     }
   })
