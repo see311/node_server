@@ -18,10 +18,10 @@ router
     if (encode == signature){
       console.log(echostr);
       
-      return echostr
+      res.send(echostr) 
     }else{
       console.log('failed');
-      return ''
+      res.send('failed')
     }
   })
 
