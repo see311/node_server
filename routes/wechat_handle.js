@@ -8,13 +8,16 @@ router
     let signature = data.signature,
       timestamp = data.timestamp,
       nonce = data.nonce,
-      token = 'secrettoken',
+      token = 'weddinginvitationsecrettoken',
       echostr = data.echostr
     let list = [token, timestamp, nonce]
     list.sort()
     let hash = crypto.createHash('sha1')
     hash.update(list.join(''))
     let encode = hash.digest('hex')
+    console.log(`encode:${encode}`);
+    console.log(`signature:${signature}`);
+    
     if (encode == signature){
       console.log(echostr);
       
