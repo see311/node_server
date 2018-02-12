@@ -35,10 +35,10 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 
 app.get('/', function (req, res) {
-  res.render('index', {
-    currentTime: new Date()
-  });
+  res.render('index');
 });
+
+app.use('/wechat',require('./routes/wechat_handle'))
 
 // 可以将一类的路由单独保存在一个文件中
 // app.use('/todos', require('./routes/todos'));
