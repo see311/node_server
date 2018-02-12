@@ -90,6 +90,7 @@ a {
 
 i {
   vertical-align: middle;
+  font-style: normal;
 }
 
 address,
@@ -156,4 +157,10 @@ input,
 textarea,
 select {
   *font-size: 100%;
+}
+
+.invisible{
+  opacity: 0;
+  width: 0;
+  height: 0;
 }

@@ -26,7 +26,14 @@
 </head>
 
 <body>
+  <div class="invisible">
+    <audio id="song" src="" autoplay></audio>
+  </div>
   <div class="center">
+    <div class="songCtrlWrap">
+      <div class="songTip">点这个随机切歌→</div>
+      <i id="songCtrl">R</i>
+    </div>
     <div class="loadingCover">
       <div class="mask"></div>
       <div class="heartShaped"></div>
@@ -85,7 +92,7 @@
             </div>
             <div class="swiper-slide">
               <img src="/img/p6.jpg">
-              <p style="width:100%;text-align:center;font-size:26px;font-weight:bold;position:relative;top:-100px;text-shadow:0 0 4px #fff;">余生，请多指教</p>
+              <p style="color:#C11C06;width:100%;text-align:center;font-size:28px;font-weight:bold;position:relative;top:-100px;text-shadow:0 0 4px #fff;">余生，请多指教</p>
             </div>
             <div class="swiper-slide info">
               <div class="card">
@@ -135,10 +142,34 @@
             !!callback && callback();
           }
         }, speed);
+      },
+      songs: ['28709310', '27810037', '406716270', '5044384', '5044368', '4334148', '381858',
+        '1091873', '22688493', '25698005', '16435050', '368418', '27731261'
+      ],
+      getSongUrl: function () {
+        return 'http://music.163.com/song/media/outer/url?id=' + this.songs[this.rNum(this.songs.length-1)] + '.mp3'
+      },
+      setSongUrl: function (url) {
+        $('#song').attr('src', url)
+        return $('#song')
       }
     }
   </script>
   <script>
+    $(function () {
+      fn.setSongUrl(fn.getSongUrl())
+    })
+    $('#song')[0].onended = function (e) {
+      console.log('songend')
+      console.log(fn.getSongUrl())
+      fn.setSongUrl(fn.getSongUrl())[0].oncanplay = function (e) {
+        this.play()
+      }
+    }
+    $('#songCtrl').on('click', function (e) {
+      e.stopPropagation
+      fn.setSongUrl(fn.getSongUrl())
+    })
     Pace.on('done', function () {
       var timer = setTimeout(function () {
         alert('笨蛋，按屏幕！！！')
@@ -147,6 +178,9 @@
       $('.loadingCover .textMagic').attr('data-word', 'Tap to start!').text('Tap to start!')
       $('.loadingCover')
         .one('click', function (e) {
+          e.stopPropagation
+          $('#song')[0].play()
+          $('.songTip').hide()
           clearTimeout(timer)
           $(this).addClass('fadeScaleOut')
           $('.stage')
@@ -169,9 +203,9 @@
             setTimeout(() => {
               $('.p1').removeClass('action')
               act_p2()
-            }, 800);
+            }, 1400);
           })
-        }, 1000);
+        }, 1400);
       })
     }
 
@@ -183,9 +217,9 @@
             setTimeout(() => {
               $('.p2').removeClass('action')
               act_p3()
-            }, 1000);
+            }, 1400);
           })
-        }, 600);
+        }, 1000);
       })
     }
 
@@ -197,71 +231,82 @@
             setTimeout(() => {
               fn.typing($('.stage .aside p'), '接下来请欣赏固定节目：婚纱照', function () {
                 setTimeout(() => {
-                  $('.tobeWrap').show(400).one('click', function (e) {
-                    $('.tell').hide(800, function () {
-                      $('.photo').addClass('action')
+                  $('.tobeWrap').show(400)
+                  var tobeX, tobeY
+                  $('.tobeWrap').one('touchstart', function (e) {
+                    console.log(e)
+                    tobeX = parseInt(e.originalEvent.changedTouches[0].pageX)
+                    tobeY = parseInt(e.originalEvent.changedTouches[0].pageY)
+                  })
+                  $('.tobeWrap').one('touchend', function (tobee) {
+                    var tobeEndX = parseInt(tobee.originalEvent.changedTouches[0].pageX)
+                    var tobeEndY = parseInt(tobee.originalEvent.changedTouches[0].pageY)
+                    if (tobeEndX - tobeX < -20) {
+                      $('.tell').hide(800, function () {
+                        $('.photo').addClass('action')
 
-                      var mySwiper = new Swiper('.swiper-container', {
-                        direction: 'vertical',
-                        mousewheel: true,
-                        watchSlidesProgress: true,
-                        on: {
-                          init: function () {
-                            this.myIndex = 0;
-                          },
-                          progress: function () {
-                            for (var i = 0; i < this.slides.length; i++) {
-                              var slide = this.slides.eq(i);
-                              var progress = this.slides[i].progress;
-                              var translate, boxShadow;
-                              translate = progress * this.height * 0.8;
-                              scale = 1 - Math.min(Math.abs(progress * 0.2), 1);
-                              if (i == this.myIndex) {
-                                slide.transform('translate3d(0,' + (translate) +
-                                  'px,0) scale(' + scale + ')');
-                                slide.css({
-                                  'z-index': 0,
-                                  'boxShadow': '0px 0px 10px rgba(0,0,0,.5)'
-                                });
+                        var mySwiper = new Swiper('.swiper-container', {
+                          direction: 'vertical',
+                          mousewheel: true,
+                          watchSlidesProgress: true,
+                          on: {
+                            init: function () {
+                              this.myIndex = 0;
+                            },
+                            progress: function () {
+                              for (var i = 0; i < this.slides.length; i++) {
+                                var slide = this.slides.eq(i);
+                                var progress = this.slides[i].progress;
+                                var translate, boxShadow;
+                                translate = progress * this.height * 0.8;
+                                scale = 1 - Math.min(Math.abs(progress * 0.2), 1);
+                                if (i == this.myIndex) {
+                                  slide.transform('translate3d(0,' + (translate) +
+                                    'px,0) scale(' + scale + ')');
+                                  slide.css({
+                                    'z-index': 0,
+                                    'boxShadow': '0px 0px 10px rgba(0,0,0,.5)'
+                                  });
+                                }
                               }
+                            },
+                            transitionEnd: function () {
+                              $('.swipeMask').hide()
+                              this.myIndex = this.activeIndex;
+                              for (var i = 0; i < this.slides.length; i++) {
+                                var slide = this.slides.eq(i);
+                                slide.transform('');
+                                slide.css('z-index', 1);
+                              }
+                              this.mousewheel.enable();
+                            },
+                            setTransition: function (speed) {
+                              for (var i = 0; i < this.slides.length; i++) {
+                                var slide = this.slides.eq(i);
+                                slide.transition(speed + 'ms');
+                              }
+                              this.mousewheel.disable();
                             }
-                          },
-                          transitionEnd: function () {
-                            $('.swipeMask').hide()
-                            this.myIndex = this.activeIndex;
-                            for (var i = 0; i < this.slides.length; i++) {
-                              var slide = this.slides.eq(i);
-                              slide.transform('');
-                              slide.css('z-index', 1);
-                            }
-                            this.mousewheel.enable();
-                          },
-                          setTransition: function (speed) {
-                            for (var i = 0; i < this.slides.length; i++) {
-                              var slide = this.slides.eq(i);
-                              slide.transition(speed + 'ms');
-                            }
-                            this.mousewheel.disable();
                           }
-                        }
-                      });
+                        });
 
-                      var startX, startY
+                        var startX, startY
 
-                      $('.swipeMask').one('touchstart', function (e) {
-                        console.log(e)
-                        startX = parseInt(e.originalEvent.changedTouches[0].pageX)
-                        startY = parseInt(e.originalEvent.changedTouches[0].pageY)
+                        $('.swipeMask').one('touchstart', function (e) {
+                          console.log(e)
+                          startX = parseInt(e.originalEvent.changedTouches[0].pageX)
+                          startY = parseInt(e.originalEvent.changedTouches[0].pageY)
+                        })
+                        $('.swipeMask').one('touchend', function (e) {
+                          var endX = parseInt(e.originalEvent.changedTouches[0].pageX)
+                          var endY = parseInt(e.originalEvent.changedTouches[0].pageY)
+                          if (endY - startY < -20) {
+                            $(this).hide()
+                            mySwiper.slideNext()
+                          }
+                        })
                       })
-                      $('.swipeMask').one('touchend', function (e) {
-                        var endX = parseInt(e.originalEvent.changedTouches[0].pageX)
-                        var endY = parseInt(e.originalEvent.changedTouches[0].pageY)
-                        if (endY - startY < -20) {
-                          $(this).hide()
-                          mySwiper.slideNext()
-                        }
-                      })
-                    })
+                    }
                   })
                 }, 800);
               })
