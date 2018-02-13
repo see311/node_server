@@ -200,7 +200,7 @@
   </script>
   <script>
     $(function () {
-      $('#song')[0].oncanplay = function (e) {
+      fn.setSongUrl(fn.getSongUrl()).oncanplay = function (e) {
         this.play()
       }
       $('#song')[0].onended = function (e) {
