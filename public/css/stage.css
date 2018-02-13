@@ -33,10 +33,10 @@
 
 @keyframes rotateCircle {
   0% {
-    transform: rotate3d(0, 0, 1, 0)
+    transform: rotateZ(0)
   }
   100%{
-    transform: rotate3d(0, 0, 1, 360deg)
+    transform: rotateZ(360deg)
   }
 }
 
