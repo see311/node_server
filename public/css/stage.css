@@ -14,14 +14,14 @@
   text-shadow: 0 0 4px #C11C06;
 }
 
-.songCtrlWrap{
+.songCtrlWrap {
   position: absolute;
   z-index: 999999;
   right: 20px;
   top: 16px;
 }
 
-.songTip{
+.songTip {
   position: absolute;
   top: 10px;
   right: 40px;
@@ -35,7 +35,7 @@
   0% {
     transform: rotateZ(0)
   }
-  100%{
+  100% {
     transform: rotateZ(360deg)
   }
 }
@@ -397,6 +397,26 @@
   top: 55%;
   transform: translate3d(-50%, -50%, 0);
   animation: swipeUp 2s ease-in-out infinite;
+}
+
+.lifeText {
+  transition: all ease-in .6s;
+  color: #db6625;
+  width: 0;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 180px;
+  left: 228px;
+  text-shadow: 1px 1px #6b4a14;
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.showLifeText{
+  opacity: 1;
+  transform: translateX(0);
 }
 
 @keyframes swipeUp {

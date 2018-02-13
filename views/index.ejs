@@ -37,10 +37,11 @@
     <div class="loadingCover">
       <div class="mask"></div>
       <div class="heartShaped"></div>
+      <p style="font-size: 36px;position: absolute;top: 40%;left: 50%;white-space:nowrap;transform:translate(-50%,-140%);">王泽&amp;刘畅</p>
       <div class="textMagic" data-word="Charging">
         Charging...
       </div>
-      <div style="font-size:20px;font-weight:bold;">2018年4月15日 河南 · 安阳</div>
+      <div style="font-size:20px;font-weight:bold;">2018年4月15日&emsp;河南 · 安阳</div>
     </div>
     <div class="stage hide">
       <div class="tell">
@@ -92,7 +93,8 @@
             </div>
             <div class="swiper-slide">
               <img src="/img/p6.jpg">
-              <p style="color:#C11C06;width:100%;text-align:center;font-size:28px;font-weight:bold;position:relative;top:-100px;text-shadow:0 0 4px #fff;">余生，请多指教</p>
+              <p class="lifeText">余生
+                <br>，请多指教</p>
             </div>
             <div class="swiper-slide info">
               <div class="card">
@@ -251,15 +253,23 @@
 
       function act_p2() {
         $('.p2').addClass('action')
-        fn.typing($('.stage .aside p'), '直到2014年3月的一天，他在大家坛上卖播放器，她看上了他在大家坛卖的播放器......', function () {
+        fn.typing($('.stage .aside p'), '直到2014年3月的一天，他在大家坛上卖播放器，', function () {
           setTimeout(() => {
-            fn.typing($('.stage .aside p'), '通过DX50的介绍，他和她成功相识并，摩擦出爱的火花 (￣y▽￣)', function () {
+            fn.typing($('.stage .aside p'), '她看上了他在卖的播放器......', function () {
               setTimeout(() => {
-                $('.p2').removeClass('action')
-                act_p3()
-              }, 1400);
+                fn.typing($('.stage .aside p'), '通过DX50的介绍，他和她成功相识', function () {
+                  setTimeout(() => {
+                    fn.typing($('.stage .aside p'), '摩擦出爱的火花 (￣y▽￣)', function () {
+                      setTimeout(() => {
+                        $('.p2').removeClass('action')
+                        act_p3()
+                      }, 1400);
+                    })
+                  }, 800);
+                })
+              }, 1000);
             })
-          }, 1000);
+          }, 800);
         })
       }
 
@@ -312,6 +322,11 @@
                                   }
                                 }
                               },
+                              transitionStart: function () {
+                                if (this.previousIndex == 5) {
+                                  $('.lifeText').removeClass('showLifeText')
+                                }
+                              },
                               transitionEnd: function () {
                                 $('.swipeMask').hide()
                                 this.myIndex = this.activeIndex;
@@ -321,6 +336,9 @@
                                   slide.css('z-index', 1);
                                 }
                                 this.mousewheel.enable();
+                                if (this.activeIndex == 5) {
+                                  $('.lifeText').addClass('showLifeText')
+                                }
                               },
                               setTransition: function (speed) {
                                 for (var i = 0; i < this.slides.length; i++) {
