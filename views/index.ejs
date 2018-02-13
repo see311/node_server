@@ -104,7 +104,7 @@
                     <img src="/img/map.png" style="width:100%">
                   </a>
                 </div>
-                <p style="text-align:center">来了就管吃管住！</p>
+                <p style="text-align:center">欢迎莅临王泽&amp;刘畅的婚礼</p>
               </div>
             </div>
           </div>
@@ -113,6 +113,48 @@
     </div>
   </div>
 
+  <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+  <script>
+    // wx.config({
+    //   debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    //   appId: '', // 必填，公众号的唯一标识
+    //   timestamp: , // 必填，生成签名的时间戳
+    //   nonceStr: '', // 必填，生成签名的随机串
+    //   signature: '', // 必填，签名
+    //   jsApiList: [
+    //     'checkJsApi',
+    //     'onMenuShareTimeline', 
+    //     'onMenuShareAppMessage'
+    //   ] // 必填，需要使用的JS接口列表
+    // })
+    // wx.ready(function () {
+    //   wx.onMenuShareTimeline({
+    //     title: '婚礼请柬', // 分享标题
+    //     link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+    //     imgUrl: '', // 分享图标
+    //     success: function () {
+    //       // 用户确认分享后执行的回调函数
+    //     },
+    //     cancel: function () {
+    //       // 用户取消分享后执行的回调函数
+    //     }
+    //   });
+    //   wx.onMenuShareAppMessage({
+    //     title: '婚礼请柬', // 分享标题
+    //     desc: '这是一封神奇的请柬，即使你不来，也非得打开看一看。', // 分享描述
+    //     link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+    //     imgUrl: '', // 分享图标
+    //     type: '', // 分享类型,music、video或link，不填默认为link
+    //     dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+    //     success: function () {
+    //       // 用户确认分享后执行的回调函数
+    //     },
+    //     cancel: function () {
+    //       // 用户取消分享后执行的回调函数
+    //     }
+    //   });
+    // })
+  </script>
   <script>
     var fn = {
       rNum: function (min, max) {
@@ -147,7 +189,8 @@
         '1091873', '22688493', '25698005', '16435050', '368418', '27731261'
       ],
       getSongUrl: function () {
-        return 'http://music.163.com/song/media/outer/url?id=' + this.songs[this.rNum(this.songs.length-1)] + '.mp3'
+        return 'http://music.163.com/song/media/outer/url?id=' + this.songs[this.rNum(this.songs.length - 1)] +
+          '.mp3'
       },
       setSongUrl: function (url) {
         $('#song').attr('src', url)
@@ -157,164 +200,168 @@
   </script>
   <script>
     $(function () {
-      fn.setSongUrl(fn.getSongUrl())
-    })
-    $('#song')[0].onended = function (e) {
-      console.log('songend')
-      console.log(fn.getSongUrl())
-      fn.setSongUrl(fn.getSongUrl())[0].oncanplay = function (e) {
+      $('#song')[0].oncanplay = function (e) {
         this.play()
       }
-    }
-    $('#songCtrl').on('click', function (e) {
-      e.stopPropagation
-      fn.setSongUrl(fn.getSongUrl())
-    })
-    Pace.on('done', function () {
-      var timer = setTimeout(function () {
-        alert('笨蛋，按屏幕！！！')
-      }, 8000);
-      $('.loadingCover .mask').css('opacity', '0')
-      $('.loadingCover .textMagic').attr('data-word', 'Tap to start!').text('Tap to start!')
-      $('.loadingCover')
-        .one('click', function (e) {
-          e.stopPropagation
-          $('#song')[0].play()
-          $('.songTip').hide()
-          clearTimeout(timer)
-          $(this).addClass('fadeScaleOut')
-          $('.stage')
-            .addClass('fadeScaleIn')
-            .one('webkitAnimationEnd', function () {
-              act_p1()
-            })
-        })
-        .one('webkitAnimationEnd', function () {
-          $(this).hide()
-        })
-
-    })
-
-    function act_p1() {
-      $('.p1').addClass('action')
-      fn.typing($('.stage .aside p'), '1989年10月14日，他和她出生了……', function () {
-        setTimeout(() => {
-          fn.typing($('.stage .aside p'), '从此，他和她走上了不同的道路……', function () {
-            setTimeout(() => {
-              $('.p1').removeClass('action')
-              act_p2()
-            }, 1400);
-          })
-        }, 1400);
+      $('#song')[0].onended = function (e) {
+        fn.setSongUrl(fn.getSongUrl())
+      }
+      $('#songCtrl').on('click', function (e) {
+        e.stopPropagation
+        fn.setSongUrl(fn.getSongUrl())
       })
-    }
-
-    function act_p2() {
-      $('.p2').addClass('action')
-      fn.typing($('.stage .aside p'), '直到2014年3月的一天，他在大家坛上卖播放器，她看上了他的播放器......', function () {
-        setTimeout(() => {
-          fn.typing($('.stage .aside p'), '通过DX50的介绍，他和她成功相识并，摩擦出爱的火花 (￣y▽￣)', function () {
-            setTimeout(() => {
-              $('.p2').removeClass('action')
-              act_p3()
-            }, 1400);
-          })
-        }, 1000);
-      })
-    }
-
-    function act_p3() {
-      $('.p3').addClass('action')
-      fn.typing($('.stage .aside p'), '经过3年半的马拉松，终于迎来了新的开始', function () {
-        setTimeout(() => {
-          fn.typing($('.stage .aside p'), '2017年9月6日，我们领证啦！♥', function () {
-            setTimeout(() => {
-              fn.typing($('.stage .aside p'), '接下来请欣赏固定节目：婚纱照', function () {
-                setTimeout(() => {
-                  $('.tobeWrap').show(400)
-                  var tobeX, tobeY
-                  $('.tobeWrap').one('touchstart', function (e) {
-                    console.log(e)
-                    tobeX = parseInt(e.originalEvent.changedTouches[0].pageX)
-                    tobeY = parseInt(e.originalEvent.changedTouches[0].pageY)
-                  })
-                  $('.tobeWrap').one('touchend', function (tobee) {
-                    var tobeEndX = parseInt(tobee.originalEvent.changedTouches[0].pageX)
-                    var tobeEndY = parseInt(tobee.originalEvent.changedTouches[0].pageY)
-                    if (tobeEndX - tobeX < -20) {
-                      $('.tell').hide(800, function () {
-                        $('.photo').addClass('action')
-
-                        var mySwiper = new Swiper('.swiper-container', {
-                          direction: 'vertical',
-                          mousewheel: true,
-                          watchSlidesProgress: true,
-                          on: {
-                            init: function () {
-                              this.myIndex = 0;
-                            },
-                            progress: function () {
-                              for (var i = 0; i < this.slides.length; i++) {
-                                var slide = this.slides.eq(i);
-                                var progress = this.slides[i].progress;
-                                var translate, boxShadow;
-                                translate = progress * this.height * 0.8;
-                                scale = 1 - Math.min(Math.abs(progress * 0.2), 1);
-                                if (i == this.myIndex) {
-                                  slide.transform('translate3d(0,' + (translate) +
-                                    'px,0) scale(' + scale + ')');
-                                  slide.css({
-                                    'z-index': 0,
-                                    'boxShadow': '0px 0px 10px rgba(0,0,0,.5)'
-                                  });
-                                }
-                              }
-                            },
-                            transitionEnd: function () {
-                              $('.swipeMask').hide()
-                              this.myIndex = this.activeIndex;
-                              for (var i = 0; i < this.slides.length; i++) {
-                                var slide = this.slides.eq(i);
-                                slide.transform('');
-                                slide.css('z-index', 1);
-                              }
-                              this.mousewheel.enable();
-                            },
-                            setTransition: function (speed) {
-                              for (var i = 0; i < this.slides.length; i++) {
-                                var slide = this.slides.eq(i);
-                                slide.transition(speed + 'ms');
-                              }
-                              this.mousewheel.disable();
-                            }
-                          }
-                        });
-
-                        var startX, startY
-
-                        $('.swipeMask').one('touchstart', function (e) {
-                          console.log(e)
-                          startX = parseInt(e.originalEvent.changedTouches[0].pageX)
-                          startY = parseInt(e.originalEvent.changedTouches[0].pageY)
-                        })
-                        $('.swipeMask').one('touchend', function (e) {
-                          var endX = parseInt(e.originalEvent.changedTouches[0].pageX)
-                          var endY = parseInt(e.originalEvent.changedTouches[0].pageY)
-                          if (endY - startY < -20) {
-                            $(this).hide()
-                            mySwiper.slideNext()
-                          }
-                        })
-                      })
-                    }
-                  })
-                }, 800);
+      Pace.on('done', function () {
+        var timer = setTimeout(function () {
+          alert('笨蛋，按屏幕！！！')
+        }, 8000);
+        $('.loadingCover .mask').css('opacity', '0')
+        $('.loadingCover .textMagic').attr('data-word', 'Tap to start!').text('Tap to start!')
+        $('.loadingCover')
+          .one('click', function (e) {
+            e.stopPropagation
+            $('#song')[0].play()
+            $('.songTip').hide()
+            clearTimeout(timer)
+            $(this).addClass('fadeScaleOut')
+            $('.stage')
+              .addClass('fadeScaleIn')
+              .one('webkitAnimationEnd', function () {
+                act_p1()
               })
-            }, 800);
           })
-        }, 800);
+          .one('webkitAnimationEnd', function () {
+            $(this).hide()
+          })
+
       })
-    }
+
+      function act_p1() {
+        $('.p1').addClass('action')
+        fn.typing($('.stage .aside p'), '1989年10月14日，他和她出生了……', function () {
+          setTimeout(() => {
+            fn.typing($('.stage .aside p'), '从此，他和她走上了不同的道路……', function () {
+              setTimeout(() => {
+                $('.p1').removeClass('action')
+                act_p2()
+              }, 1400);
+            })
+          }, 1400);
+        })
+      }
+
+      function act_p2() {
+        $('.p2').addClass('action')
+        fn.typing($('.stage .aside p'), '直到2014年3月的一天，他在大家坛上卖播放器，她看上了他在大家坛卖的播放器......', function () {
+          setTimeout(() => {
+            fn.typing($('.stage .aside p'), '通过DX50的介绍，他和她成功相识并，摩擦出爱的火花 (￣y▽￣)', function () {
+              setTimeout(() => {
+                $('.p2').removeClass('action')
+                act_p3()
+              }, 1400);
+            })
+          }, 1000);
+        })
+      }
+
+      function act_p3() {
+        $('.p3').addClass('action')
+        fn.typing($('.stage .aside p'), '经过3年半的马拉松，终于迎来了新的开始', function () {
+          setTimeout(() => {
+            fn.typing($('.stage .aside p'), '2017年9月6日，他们领证啦！♥', function () {
+              setTimeout(() => {
+                fn.typing($('.stage .aside p'), '接下来请欣赏固定节目：婚纱照', function () {
+                  setTimeout(() => {
+                    $('.tobeWrap').show(400)
+                    var tobeX, tobeY
+                    $('.tobeWrap').one('touchstart', function (e) {
+                      console.log(e)
+                      tobeX = parseInt(e.originalEvent.changedTouches[0].pageX)
+                      tobeY = parseInt(e.originalEvent.changedTouches[0].pageY)
+                    })
+                    $('.tobeWrap').one('touchend', function (tobee) {
+                      var tobeEndX = parseInt(tobee.originalEvent.changedTouches[0].pageX)
+                      var tobeEndY = parseInt(tobee.originalEvent.changedTouches[0].pageY)
+                      if (tobeEndX - tobeX < -20) {
+                        $('.tell').hide(800, function () {
+                          $('.photo').addClass('action')
+
+                          var mySwiper = new Swiper('.swiper-container', {
+                            direction: 'vertical',
+                            mousewheel: true,
+                            watchSlidesProgress: true,
+                            on: {
+                              init: function () {
+                                this.myIndex = 0;
+                              },
+                              progress: function () {
+                                for (var i = 0; i < this.slides.length; i++) {
+                                  var slide = this.slides.eq(i);
+                                  var progress = this.slides[i].progress;
+                                  var translate, boxShadow;
+                                  translate = progress * this.height * 0.8;
+                                  scale = 1 - Math.min(Math.abs(progress *
+                                    0.2), 1);
+                                  if (i == this.myIndex) {
+                                    slide.transform('translate3d(0,' + (
+                                        translate) +
+                                      'px,0) scale(' + scale + ')');
+                                    slide.css({
+                                      'z-index': 0,
+                                      'boxShadow': '0px 0px 10px rgba(0,0,0,.5)'
+                                    });
+                                  }
+                                }
+                              },
+                              transitionEnd: function () {
+                                $('.swipeMask').hide()
+                                this.myIndex = this.activeIndex;
+                                for (var i = 0; i < this.slides.length; i++) {
+                                  var slide = this.slides.eq(i);
+                                  slide.transform('');
+                                  slide.css('z-index', 1);
+                                }
+                                this.mousewheel.enable();
+                              },
+                              setTransition: function (speed) {
+                                for (var i = 0; i < this.slides.length; i++) {
+                                  var slide = this.slides.eq(i);
+                                  slide.transition(speed + 'ms');
+                                }
+                                this.mousewheel.disable();
+                              }
+                            }
+                          });
+
+                          var startX, startY
+
+                          $('.swipeMask').one('touchstart', function (e) {
+                            console.log(e)
+                            startX = parseInt(e.originalEvent.changedTouches[0]
+                              .pageX)
+                            startY = parseInt(e.originalEvent.changedTouches[0]
+                              .pageY)
+                          })
+                          $('.swipeMask').one('touchend', function (e) {
+                            var endX = parseInt(e.originalEvent.changedTouches[
+                              0].pageX)
+                            var endY = parseInt(e.originalEvent.changedTouches[
+                              0].pageY)
+                            if (endY - startY < -20) {
+                              $(this).hide()
+                              mySwiper.slideNext()
+                            }
+                          })
+                        })
+                      }
+                    })
+                  }, 800);
+                })
+              }, 800);
+            })
+          }, 800);
+        })
+      }
+    })
   </script>
 </body>
 
