@@ -34,6 +34,7 @@ router
       console.dir(result);
 
     })
+    res.send('')
 
     // req
     //   .on('data', chunk => {
