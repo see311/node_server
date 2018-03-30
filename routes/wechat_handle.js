@@ -5,7 +5,6 @@ var crypto = require('crypto')
 // 中间件：检查该路由下每个请求是否是微信发来的
 router.use((req, res, next) => {
   let data = req.query
-  console.log(data);
 
   let signature = data.signature,
     timestamp = data.timestamp,
@@ -26,11 +25,20 @@ router.use((req, res, next) => {
 router
   .get('/', (req, res, next) => {
     console.log('get');
-    
+
   })
   .post('/', (req, res, next) => {
     console.log('post');
-    
+    let data
+    req
+      .on('data', chunk => {
+        data += chunk
+      })
+      .on('end', () => {
+        console.log(data);
+        
+      })
+
   })
 
 module.exports = router;
