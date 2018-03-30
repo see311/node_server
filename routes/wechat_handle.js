@@ -52,8 +52,8 @@ router
           '<FromUserName><![CDATA[' + message.ToUserName[0] + ']]></FromUserName>' +
           '<CreateTime>' + new Date().getTime() + '</CreateTime>' +
           '<MsgType><![CDATA[text]]></MsgType>' +
-          '<Content><![CDATA[+'
-        jsData.Content + ']]></Content>' +
+          '<Content><![CDATA[' +
+          jsData.Content + ']]></Content>' +
           '</xml>'
 
         res.send(resData)
