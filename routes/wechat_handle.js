@@ -47,16 +47,16 @@ router
     myXml(xmlData).then((result) => {
       jsData = result.xml
       if (jsData.MsgType == 'text') {
-        let resData = '<xml>' +
-          '<ToUserName><![CDATA[' + jsData.FromUserName[0] + ']]></ToUserName>' +
-          '<FromUserName><![CDATA[' + message.ToUserName[0] + ']]></FromUserName>' +
-          '<CreateTime>' + new Date().getTime() + '</CreateTime>' +
-          '<MsgType><![CDATA[text]]></MsgType>' +
-          '<Content><![CDATA[' +
-          jsData.Content + ']]></Content>' +
-          '</xml>'
+        // let resData = '<xml>' +
+        //   '<ToUserName><![CDATA[' + jsData.FromUserName[0] + ']]></ToUserName>' +
+        //   '<FromUserName><![CDATA[' + message.ToUserName[0] + ']]></FromUserName>' +
+        //   '<CreateTime>' + new Date().getTime() + '</CreateTime>' +
+        //   '<MsgType><![CDATA[text]]></MsgType>' +
+        //   '<Content><![CDATA[' +
+        //   jsData.Content + ']]></Content>' +
+        //   '</xml>'
 
-        res.send(resData)
+        // res.send(resData)
       }
     })
   })
