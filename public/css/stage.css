@@ -386,7 +386,7 @@
   height: 100%;
 }
 
-.swipeMask .circle {
+.swipeMask .circle,.tobeWrap .circle {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -396,7 +396,12 @@
   left: 50%;
   top: 55%;
   transform: translate3d(-50%, -50%, 0);
+}
+.swipeMask .circle{
   animation: swipeUp 2s ease-in-out infinite;
+}
+.tobeWrap .circle{
+  animation: swipeLeft 2s ease-in-out infinite;
 }
 
 .lifeText {
@@ -426,6 +431,15 @@
   70%,
   100% {
     top: 40%;
+  }
+}
+@keyframes swipeLeft {
+  0% {
+    left: 55%;
+  }
+  70%,
+  100% {
+    left: 40%;
   }
 }
 
