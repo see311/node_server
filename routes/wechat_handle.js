@@ -28,9 +28,9 @@ router
 
   })
   .post('/', (req, res, next) => {
-    let xmlData = req.body
+    let xmlData = req.rawBody
     console.log(xmlData);
-
+    
     // req
     //   .on('data', chunk => {
     //     data += chunk

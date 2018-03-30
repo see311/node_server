@@ -5,6 +5,7 @@ var timeout = require('connect-timeout');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+require("body-parser-xml")(bodyParser);
 var AV = require('leanengine');
 
 // 加载云函数定义，你可以将云函数拆分到多个文件方便管理，但需要在主文件中加载它们
@@ -28,6 +29,20 @@ app.enable('trust proxy');
 // 需要重定向到 HTTPS 可去除下一行的注释。
 // app.use(AV.Cloud.HttpsRedirect());
 
+app.use(bodyParser.xml({
+  limit: "1MB", // Reject payload bigger than 1 MB
+  xmlParseOptions: {
+    normalize: true, // Trim whitespace inside text nodes
+    normalizeTags: true, // Transform tags to lowercase
+    explicitArray: false // Only put nodes in array if >1
+  },
+  verify: function (req, res, buf, encoding) {
+    if (buf && buf.length) {
+      // Store the raw XML
+      req.rawBody = buf.toString(encoding || "utf8");
+    }
+  }
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
@@ -38,7 +53,7 @@ app.get('/', function (req, res) {
   res.render('index');
 });
 
-app.use('/wechat',require('./routes/wechat_handle'))
+app.use('/wechat', require('./routes/wechat_handle'))
 
 // 可以将一类的路由单独保存在一个文件中
 // app.use('/todos', require('./routes/todos'));
