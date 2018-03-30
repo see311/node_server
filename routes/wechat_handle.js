@@ -28,16 +28,16 @@ router
 
   })
   .post('/', (req, res, next) => {
-    console.log('post');
-    let data
-    req
-      .on('data', chunk => {
-        data += chunk
-      })
-      .on('end', () => {
-        console.log(data);
-        
-      })
+    let xmlData = req.body
+    console.log(xmlData);
+
+    // req
+    //   .on('data', chunk => {
+    //     data += chunk
+    //   })
+    //   .on('end', () => {
+    //     console.log(data);
+    //   })
 
   })
 
