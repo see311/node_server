@@ -29,7 +29,20 @@ app.enable('trust proxy');
 // 需要重定向到 HTTPS 可去除下一行的注释。
 // app.use(AV.Cloud.HttpsRedirect());
 
-app.use(bodyParser.xml());
+app.use(bodyParser.xml({
+  limit: "1MB", // Reject payload bigger than 1 MB
+  xmlParseOptions: {
+    normalize: true, // Trim whitespace inside text nodes
+    normalizeTags: true, // Transform tags to lowercase
+    explicitArray: false // Only put nodes in array if >1
+  },
+  verify: function (req, res, buf, encoding) {
+    if (buf && buf.length) {
+      // Store the raw XML
+      req.rawBody = buf.toString(encoding || "utf8");
+    }
+  }
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
@@ -41,9 +54,6 @@ app.get('/', function (req, res) {
 });
 
 app.use('/wechat', require('./routes/wechat_handle'))
-
-// 可以将一类的路由单独保存在一个文件中
-// app.use('/todos', require('./routes/todos'));
 
 app.use(function (req, res, next) {
   // 如果任何一个路由都没有返回响应，则抛出一个 404 异常给后续的异常处理器
