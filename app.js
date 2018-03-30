@@ -40,7 +40,7 @@ app.use(bodyParser.xml({
       // Store the raw XML
       req.rawBody = buf.toString(encoding || "utf8");
     }
-  // }
+  }
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
