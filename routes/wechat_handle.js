@@ -1,6 +1,7 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express')
+var router = express.Router()
 var crypto = require('crypto')
+var xmlParser = require('xml2js').parseString
 
 // 中间件：检查该路由下每个请求是否是微信发来的
 router.use((req, res, next) => {
@@ -29,8 +30,11 @@ router
   })
   .post('/', (req, res, next) => {
     let xmlData = req.rawBody
-    console.log(xmlData);
-    
+    xmlParser(xmlData, (err, result) => {
+      console.dir(result);
+
+    })
+
     // req
     //   .on('data', chunk => {
     //     data += chunk
