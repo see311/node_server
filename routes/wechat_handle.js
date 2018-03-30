@@ -2,7 +2,7 @@ var express = require('express')
 var router = express.Router()
 var crypto = require('crypto')
 var xmlParser = require('xml2js').parseString
-var js2xml = require('js2xml').Js2Xml
+// var js2xml = require('js2xml').Js2Xml
 
 // 中间件：检查该路由下每个请求是否是微信发来的
 router.use((req, res, next) => {
@@ -54,18 +54,6 @@ router
         res.send(jsData.Content)
       }
     })
-
-    // if ()
-      res.send('')
-
-    // req
-    //   .on('data', chunk => {
-    //     data += chunk
-    //   })
-    //   .on('end', () => {
-    //     console.log(data);
-    //   })
-
   })
 
 module.exports = router;
