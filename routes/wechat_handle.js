@@ -30,35 +30,35 @@ router
 
   })
   .post('/', (req, res, next) => {
-    let xmlData = req.rawBody,
-      jsData
-    let myXml = (xmlData) => {
-      return new Promise((resolve, reject) => {
-        xmlParser(xmlData, (err, result) => {
-          if (err) {
-            reject(err)
-          } else {
-            resolve(result)
-          }
-        })
-      })
-    }
+    // let xmlData = req.rawBody,
+    //   jsData
+    // let myXml = (xmlData) => {
+    //   return new Promise((resolve, reject) => {
+    //     xmlParser(xmlData, (err, result) => {
+    //       if (err) {
+    //         reject(err)
+    //       } else {
+    //         resolve(result)
+    //       }
+    //     })
+    //   })
+    // }
 
-    myXml(xmlData).then((result) => {
-      jsData = result.xml
-      if (jsData.MsgType == 'text') {
-        // let resData = '<xml>' +
-        //   '<ToUserName><![CDATA[' + jsData.FromUserName[0] + ']]></ToUserName>' +
-        //   '<FromUserName><![CDATA[' + message.ToUserName[0] + ']]></FromUserName>' +
-        //   '<CreateTime>' + new Date().getTime() + '</CreateTime>' +
-        //   '<MsgType><![CDATA[text]]></MsgType>' +
-        //   '<Content><![CDATA[' +
-        //   jsData.Content + ']]></Content>' +
-        //   '</xml>'
+    // myXml(xmlData).then((result) => {
+    //   jsData = result.xml
+    //   if (jsData.MsgType == 'text') {
+    //     let resData = '<xml>' +
+    //       '<ToUserName><![CDATA[' + jsData.FromUserName[0] + ']]></ToUserName>' +
+    //       '<FromUserName><![CDATA[' + message.ToUserName[0] + ']]></FromUserName>' +
+    //       '<CreateTime>' + new Date().getTime() + '</CreateTime>' +
+    //       '<MsgType><![CDATA[text]]></MsgType>' +
+    //       '<Content><![CDATA[' +
+    //       jsData.Content + ']]></Content>' +
+    //       '</xml>'
 
-        // res.send(resData)
-      }
-    })
+    //     res.send(resData)
+    //   }
+    // })
   })
 
 module.exports = router;
