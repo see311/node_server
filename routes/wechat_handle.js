@@ -30,9 +30,8 @@ router
 
   })
   .post('/', (req, res, next) => {
-    let xmlData = req.rawBody,
-      jsData
-    let myXml = (xmlData) => {
+    const xmlData = req.rawBody
+    let parsedXml = (xmlData) => {
       return new Promise((resolve, reject) => {
         xmlParser(xmlData, (err, result) => {
           if (err) {
@@ -44,19 +43,23 @@ router
       })
     }
 
-    myXml(xmlData)
+    parsedXml(xmlData)
       .then((result) => {
-        jsData = result.xml
+        let jsData = result.xml
+        console.log(jsData.FromUserName[0]);
+        
         if (jsData.MsgType == 'text') {
           let resData = `<xml>
-          <ToUserName><![CDATA[ jsData.FromUserName[0] ]]></ToUserName>
-          <FromUserName><![CDATA[ jsData.ToUserName[0] ]]></FromUserName>
-          <CreateTime> new Date().getTime() </CreateTime>
+          <ToUserName><![CDATA[${jsData.FromUserName[0]}]]></ToUserName>
+          <FromUserName><![CDATA[${jsData.ToUserName[0]}]]></FromUserName>
+          <CreateTime>${new Date().getTime()}</CreateTime>
           <MsgType><![CDATA[text]]></MsgType>
-          <Content><![CDATA[jsData.Content ]]></Content>
+          <Content><![CDATA[${jsData.Content}]]></Content>
           </xml>`
 
           res.send(resData)
+        }else{
+          res.send('')
         }
       })
       .catch(err => {
