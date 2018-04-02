@@ -2,7 +2,7 @@ var express = require('express')
 var router = express.Router()
 var crypto = require('crypto')
 var xmlParser = require('xml2js').parseString
-var js2xml = require('js2xml').Js2Xml
+// var js2xml = require('js2xml').Js2Xml
 
 // 中间件：检查该路由下每个请求是否是微信发来的
 router.use((req, res, next) => {
@@ -30,35 +30,35 @@ router
 
   })
   .post('/', (req, res, next) => {
-    // let xmlData = req.rawBody,
-    //   jsData
-    // let myXml = (xmlData) => {
-    //   return new Promise((resolve, reject) => {
-    //     xmlParser(xmlData, (err, result) => {
-    //       if (err) {
-    //         reject(err)
-    //       } else {
-    //         resolve(result)
-    //       }
-    //     })
-    //   })
-    // }
+    let xmlData = req.rawBody,
+      jsData
+    let myXml = (xmlData) => {
+      return new Promise((resolve, reject) => {
+        xmlParser(xmlData, (err, result) => {
+          if (err) {
+            reject(err)
+          } else {
+            resolve(result)
+          }
+        })
+      })
+    }
 
-    // myXml(xmlData).then((result) => {
-    //   jsData = result.xml
-    //   if (jsData.MsgType == 'text') {
-    //     let resData = '<xml>' +
-    //       '<ToUserName><![CDATA[' + jsData.FromUserName[0] + ']]></ToUserName>' +
-    //       '<FromUserName><![CDATA[' + message.ToUserName[0] + ']]></FromUserName>' +
-    //       '<CreateTime>' + new Date().getTime() + '</CreateTime>' +
-    //       '<MsgType><![CDATA[text]]></MsgType>' +
-    //       '<Content><![CDATA[' +
-    //       jsData.Content + ']]></Content>' +
-    //       '</xml>'
+    myXml(xmlData).then((result) => {
+      jsData = result.xml
+      if (jsData.MsgType == 'text') {
+        let resData = '<xml>' +
+          '<ToUserName><![CDATA[' + jsData.FromUserName[0] + ']]></ToUserName>' +
+          '<FromUserName><![CDATA[' + message.ToUserName[0] + ']]></FromUserName>' +
+          '<CreateTime>' + new Date().getTime() + '</CreateTime>' +
+          '<MsgType><![CDATA[text]]></MsgType>' +
+          '<Content><![CDATA[' +
+          jsData.Content + ']]></Content>' +
+          '</xml>'
 
-    //     res.send(resData)
-    //   }
-    // })
+        res.send(resData)
+      }
+    })
   })
 
 module.exports = router;
