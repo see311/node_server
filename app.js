@@ -15,7 +15,7 @@ var app = express();
 
 // 设置模板引擎
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('view engine', 'html');
 
 app.use(express.static('public'));
 
@@ -49,7 +49,7 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 
 app.get('/', function (req, res) {
-  res.render('personal_web/index');
+  res.render('./personal_web/index');
 });
 
 app.use('/wechat', require('./routes/wechat_handle'))
