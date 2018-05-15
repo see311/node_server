@@ -1,8 +1,8 @@
 {
-  "name": "node-js-getting-started",
+  "name": "node-server",
   "version": "1.0.0",
   "private": true,
-  "description": "A sample Node.js app using Express",
+  "description": "Node.js app using Express",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

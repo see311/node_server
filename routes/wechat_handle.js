@@ -20,7 +20,7 @@ router.use((req, res, next) => {
   if (encode == signature) {
     next()
   } else {
-    throw new Error('Permission Denied')
+    throw new Error('Permission Denied:not from wechat')
   }
 })
 
