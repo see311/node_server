@@ -1,0 +1,154 @@
+<!doctype html>
+<html >
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/home.css">
+ </head>
+ <body>
+	<header>
+		<div id="logo"></div><ul>
+			<li class="active"><a href="home.html"><p>HOME</p><span>首页</span></a></li><i></i><li><a href="details.html"><p>PRODUCT</p><span>产品详情</span></a></li><i></i><li><a href="contact.html"><p>CONTACT US</p><span>联系我们</span></a></li><i></i></ul>
+		<p>Tel:18722013307</p>
+	</header>
+	<section>
+	<!-- slider视图模板 -->
+  <div class="slider" id="banner">
+		<div class="main" id="template_main">
+			<div class="main-i {{css}}" id="main_{{index}}">
+				<div class="caption">
+					<h2>{{h2}}</h2>
+					<h3>{{h3}}</h3>
+				</div>
+				<img src="imgs/{{index}}.jpg" class="picture">
+			</div>			
+		</div>			
+		<div class="ctrl" id="template_ctrl">
+			<a href="javascript:switchSlider({{index}});" class="ctrl-i" id="ctrl_{{index}}"><img src="imgs/{{index}}.jpg" alt=""></a>
+		</div>
+	</div>
+	<!-- slider模板结束 -->
+	</section>
+	<footer>
+		<div id="intro">
+			<h1>天津舒遥汽车装饰用品有限公司</h1>
+			<p>是汽车坐垫、把套、雨刷器、后备箱垫等产品专业生产加工的公司，拥有完整、科学的质量管理体系。</p>
+			<p>天津舒遥汽车装饰用品有限公司的诚信、实力和产品质量获得业界的认可。</p>
+			<p>欢迎各界朋友莅临参观、指导和业务洽谈。</p>
+		</div>
+	</footer>	
+	
+	<script>
+		//模拟数据定义
+		var data=[
+			{img:1,h1:'Creative',h2:'DUET'},
+			{img:2,h1:'Friendly',h2:'DEVIL'},
+			{img:3,h1:'Tranquilent',h2:'COMPATRIOT'},
+			{img:4,h1:'Insecure',h2:'HUSSLER'},
+			{img:5,h1:'Loving',h2:'REBEL'},
+			{img:6,h1:'Passionate',h2:'SEEKER'},
+			{img:7,h1:'Crazy',h2:'FRIEND'},
+		];
+		//通用函数
+		var g=function(id){
+			if(id.substr(0,1)=='.'){
+				return document.getElementsByClassName(id.substr(1));
+			}else if(id.substr(0,1)=='#'){
+				return document.getElementById(id.substr(1));
+			}
+		};
+		/*
+		//header的active效果,用闭包保护全局变量
+		(function(){
+			var li=document.querySelector('header ul');
+			console.log(li);
+			li.addEventListener('click',function(e){
+				var target=e.target;
+				if(target.nodeName!='LI'){
+					while(1){
+						target=target.parentNode;
+						if(target.nodeName=='LI'){break;}
+					}
+					target.className='active';
+				}
+			},false);
+		})();
+		*/
+
+		//添加幻灯片
+		function addSlider(){
+			var tpl_main=g('#template_main').innerHTML.replace(/^\s*/,'').replace(/\s*$/,'');
+			var tpl_ctrl=g('#template_ctrl').innerHTML.replace(/^\s*/,'').replace(/\s*$/,'');
+			var out_main=[],
+					out_ctrl=[];
+			for(var i=0;i<data.length;i++){
+				var _html_main=tpl_main
+					.replace(/{{index}}/g,data[i].img)
+					.replace(/{{h2}}/g,data[i].h1)
+					.replace(/{{h3}}/g,data[i].h2)
+					.replace(/{{css}}/g,['main-i_right',''][i%2]);
+				var _html_ctrl=tpl_ctrl.replace(/{{index}}/g,data[i].img);
+				out_main.push(_html_main);
+				out_ctrl.push(_html_ctrl);
+			};	
+			g('#template_main').innerHTML=out_main.join('');
+			g('#template_ctrl').innerHTML=out_ctrl.join('');
+			
+			//增加背景图片，防止切换背景空白
+			g('#template_main').innerHTML+=tpl_main;
+			g('#main_{{index}}').id='main_background';
+		};
+
+		//切换幻灯片				
+		function switchSlider(i){
+			if(g('.main-i_active')[0]||g('.ctrl-i_active')[0]){
+				g('.main-i_active')[0].className=
+					g('.main-i_active')[0].className.replace(' main-i_active','');
+				g('.ctrl-i_active')[0].className=
+					g('.ctrl-i_active')[0].className.replace(' ctrl-i_active','');
+			}
+			g('#main_'+i).className+=' main-i_active';				
+			g('#ctrl_'+i).className+=' ctrl-i_active';
+			//将背景图切换为切换之前的图片，使切换时背景没有空白
+			setTimeout(function(){g('#main_background').innerHTML=g('#main_'+i).innerHTML;},1000);				
+		}
+
+		//动态调整图片高度使其居中，根据实际情况使用
+		/*
+		function movePictures(){
+			var pictures=g('.picture');
+			for(var i=0;i<pictures.length;i++){
+				pictures[i].style.marginTop=(-1*pictures[i].clientHeight/2)+'px'
+			}
+		}
+		*/
+
+		//自动轮播
+		var timer,i=2; //页面初始情况active位于第一张，自动轮播从第二张开始
+		g('#banner').addEventListener('mouseover',function(){
+			clearInterval(timer);
+			timer=null;					
+		});
+		g('#banner').addEventListener('mouseout',function(){
+			timer=setInterval(function(){
+				i=g('.main-i_active')[0].id.slice(-1); //当鼠标移出后从当前为active的下一个开始轮播
+				i++;
+				i>7&&(i=1);
+				switchSlider(i);						
+			},4000);
+		});
+
+		window.onload=function(){
+			addSlider();
+			switchSlider(1);
+			timer=setInterval(function(){
+				switchSlider(i);
+					i++;
+					i>7&&(i=1);
+			},4000);
+			//setTimeout(movePictures,10); banner内容是动态生成的，需要相对于生成slider后有一个延迟
+		}				
+	</script>
+ </body>
+</html>

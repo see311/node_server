@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+ <head>
+	<meta charset="UTF-8">
+  <title>Document</title>
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/details.css">
+ </head>
+ <body>
+  <header>
+		<div id="logo"></div><ul>
+			<li><a href="home.html"><p>HOME</p><span>首页</span></a></li><i></i><li class="active"><a href="details.html"><p>PRODUCT</p><span>产品详情</span></a></li><i></i><li><a href="contact.html"><p>CONTACT US</p><span>联系我们</span></a></li><i></i></ul>
+		<p>Tel:18722013307</p>
+	</header>
+	<section>
+		<div id="products"><div id="text"><p id="title"></p><p id="description"></p></div></div><div id="back">->back</div>
+	</section>
+
+	<script>
+		var data=[
+			{url:'1',title:'YH-01',description:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore sunt quos repudiandae quidem eveniet perspiciatis perferendis obcaecati ullam. A sapiente earum vel nobis odit repellat molestias nemo sint quasi enim! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore animi molestiae illum totam optio possimus dolorem unde laborum nobis quod ullam sed debitis dolor iste illo eius ipsa numquam dolore.<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit modi temporibus mollitia ut doloribus nobis voluptates quod dignissimos perspiciatis ullam assumenda alias quae dolorum labore est obcaecati fuga. Commodi nesciunt!'},
+			{url:'2',title:'YH-01',description:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore sunt quos repudiandae quidem eveniet perspiciatis perferendis obcaecati ullam. A sapiente earum vel nobis odit repellat molestias nemo sint quasi enim! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore animi molestiae illum totam optio possimus dolorem unde laborum nobis quod ullam sed debitis dolor iste illo eius ipsa numquam dolore.<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit modi temporibus mollitia ut doloribus nobis voluptates quod dignissimos perspiciatis ullam assumenda alias quae dolorum labore est obcaecati fuga. Commodi nesciunt!'},
+			{url:'3',title:'YH-01',description:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore sunt quos repudiandae quidem eveniet perspiciatis perferendis obcaecati ullam. A sapiente earum vel nobis odit repellat molestias nemo sint quasi enim! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore animi molestiae illum totam optio possimus dolorem unde laborum nobis quod ullam sed debitis dolor iste illo eius ipsa numquam dolore.<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit modi temporibus mollitia ut doloribus nobis voluptates quod dignissimos perspiciatis ullam assumenda alias quae dolorum labore est obcaecati fuga. Commodi nesciunt!'},
+			{url:'1',title:'YH-01',description:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore sunt quos repudiandae quidem eveniet perspiciatis perferendis obcaecati ullam. A sapiente earum vel nobis odit repellat molestias nemo sint quasi enim! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore animi molestiae illum totam optio possimus dolorem unde laborum nobis quod ullam sed debitis dolor iste illo eius ipsa numquam dolore.<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit modi temporibus mollitia ut doloribus nobis voluptates quod dignissimos perspiciatis ullam assumenda alias quae dolorum labore est obcaecati fuga. Commodi nesciunt!'},
+			{url:'2',title:'YH-01',description:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore sunt quos repudiandae quidem eveniet perspiciatis perferendis obcaecati ullam. A sapiente earum vel nobis odit repellat molestias nemo sint quasi enim! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore animi molestiae illum totam optio possimus dolorem unde laborum nobis quod ullam sed debitis dolor iste illo eius ipsa numquam dolore.<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit modi temporibus mollitia ut doloribus nobis voluptates quod dignissimos perspiciatis ullam assumenda alias quae dolorum labore est obcaecati fuga. Commodi nesciunt!'},
+			{url:'3',title:'YH-01',description:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore sunt quos repudiandae quidem eveniet perspiciatis perferendis obcaecati ullam. A sapiente earum vel nobis odit repellat molestias nemo sint quasi enim! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore animi molestiae illum totam optio possimus dolorem unde laborum nobis quod ullam sed debitis dolor iste illo eius ipsa numquam dolore.<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit modi temporibus mollitia ut doloribus nobis voluptates quod dignissimos perspiciatis ullam assumenda alias quae dolorum labore est obcaecati fuga. Commodi nesciunt!'},
+			{url:'1',title:'YH-01',description:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore sunt quos repudiandae quidem eveniet perspiciatis perferendis obcaecati ullam. A sapiente earum vel nobis odit repellat molestias nemo sint quasi enim! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore animi molestiae illum totam optio possimus dolorem unde laborum nobis quod ullam sed debitis dolor iste illo eius ipsa numquam dolore.<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit modi temporibus mollitia ut doloribus nobis voluptates quod dignissimos perspiciatis ullam assumenda alias quae dolorum labore est obcaecati fuga. Commodi nesciunt!'},
+			{url:'2',title:'YH-01',description:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore sunt quos repudiandae quidem eveniet perspiciatis perferendis obcaecati ullam. A sapiente earum vel nobis odit repellat molestias nemo sint quasi enim! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore animi molestiae illum totam optio possimus dolorem unde laborum nobis quod ullam sed debitis dolor iste illo eius ipsa numquam dolore.<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit modi temporibus mollitia ut doloribus nobis voluptates quod dignissimos perspiciatis ullam assumenda alias quae dolorum labore est obcaecati fuga. Commodi nesciunt!'},
+			{url:'3',title:'YH-01',description:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore sunt quos repudiandae quidem eveniet perspiciatis perferendis obcaecati ullam. A sapiente earum vel nobis odit repellat molestias nemo sint quasi enim! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore animi molestiae illum totam optio possimus dolorem unde laborum nobis quod ullam sed debitis dolor iste illo eius ipsa numquam dolore.<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit modi temporibus mollitia ut doloribus nobis voluptates quod dignissimos perspiciatis ullam assumenda alias quae dolorum labore est obcaecati fuga. Commodi nesciunt!'},
+			{url:'1',title:'YH-01',description:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore sunt quos repudiandae quidem eveniet perspiciatis perferendis obcaecati ullam. A sapiente earum vel nobis odit repellat molestias nemo sint quasi enim! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore animi molestiae illum totam optio possimus dolorem unde laborum nobis quod ullam sed debitis dolor iste illo eius ipsa numquam dolore.<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit modi temporibus mollitia ut doloribus nobis voluptates quod dignissimos perspiciatis ullam assumenda alias quae dolorum labore est obcaecati fuga. Commodi nesciunt!'},
+			{url:'2',title:'YH-01',description:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore sunt quos repudiandae quidem eveniet perspiciatis perferendis obcaecati ullam. A sapiente earum vel nobis odit repellat molestias nemo sint quasi enim! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore animi molestiae illum totam optio possimus dolorem unde laborum nobis quod ullam sed debitis dolor iste illo eius ipsa numquam dolore.<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit modi temporibus mollitia ut doloribus nobis voluptates quod dignissimos perspiciatis ullam assumenda alias quae dolorum labore est obcaecati fuga. Commodi nesciunt!'},
+			{url:'3',title:'YH-01',description:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore sunt quos repudiandae quidem eveniet perspiciatis perferendis obcaecati ullam. A sapiente earum vel nobis odit repellat molestias nemo sint quasi enim! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore animi molestiae illum totam optio possimus dolorem unde laborum nobis quod ullam sed debitis dolor iste illo eius ipsa numquam dolore.<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit modi temporibus mollitia ut doloribus nobis voluptates quod dignissimos perspiciatis ullam assumenda alias quae dolorum labore est obcaecati fuga. Commodi nesciunt!'}
+		];
+		function addPro(){ //添加产品图片
+			var pro=document.getElementById('products');
+			var frag=document.createDocumentFragment();
+			for(var i=0, len=data.length; i<len; i++){
+				var elem=document.createElement('div');
+				elem.className='preview';
+				elem.style.background='url(imgs/'+data[i].url+'s.jpg) center';
+				elem.setAttribute('i',i);
+				frag.appendChild(elem);
+			}
+			pro.appendChild(frag);
+		};
+		!function anim(){ //产品图片点击动画	
+			var pro=document.getElementById('products');
+			var back=document.getElementById('back');			
+			pro.addEventListener('click',function(e){
+				
+				var text=document.getElementById('text');
+				var description=document.getElementById('description');
+				var title=document.getElementById('title');
+				var target=e.target;
+				if(target.className=='preview'){
+					var moves=10;
+					var children=target.parentNode.children;
+					var opacity=1;					
+					var timer=setInterval(function(){ //隐藏所点元素的所有兄弟元素
+						opacity-=0.1;
+						for(var i=0,len=children.length; i<len; i++){							
+							if(children[i]!==target&&children[i].id!=='text'){									
+								children[i].style.opacity=opacity.toFixed(1);								
+							}
+						};					
+						moves--;
+						if(moves==0){
+							clearInterval(timer);
+							timer=null;
+							moves=10;
+						};
+					},30);
+					setTimeout(function(){ //等待消失动画结束
+						var top=target.offsetTop;
+						var left=target.offsetLeft;					
+						target.style.position='absolute'; //改成相对定位，以保存原始位置
+						target.style.top=top+'px';
+						target.style.left=left+'px';
+						var s_top=top/10;
+						var s_left=left/10;
+						var timer=setInterval(function(){ //开始移动所点元素的动画
+							top-=s_top;
+							left-=s_left;
+							target.style.top=top+'px';
+							target.style.left=left+'px';							
+							moves--;
+							if(moves==0){								
+								clearInterval(timer);
+								timer=null;
+								moves=10;						
+								for(i=0,len=children.length; i<len; i++){
+									if(children[i]!==target&&children[i].id!=='text'){
+										children[i].style.display='none';	
+									}
+								};
+								text.style.display='block';					
+								var i=parseInt(target.getAttribute('i'));
+								description.innerHTML=data[i].description;
+								title.innerHTML=data[i].title;
+								text.className='show';					
+								back.style.display='inline-block';
+							};							
+						},40);
+					},700);
+					
+				};
+			});
+			back.addEventListener('click',function(){ //恢复原始状态
+				var moves=10;
+				var opacity=1;
+				var timer=setInterval(function(){
+					opacity-=0.1;
+					pro.style.opacity=opacity.toFixed(1);
+					moves--;
+					if(moves==0){
+						clearInterval(timer);
+						timer=null;
+						moves=10;
+					};
+					if(!timer){
+						pro.innerHTML='<div id="text"><p id="title"></p><p id="description"></p>';
+						back.style.display='none';
+						addPro();
+						timer=setInterval(function(){
+							opacity+=0.1;
+							pro.style.opacity=opacity.toFixed(1);
+							moves--;
+							if(moves==0){
+								clearInterval(timer);
+								timer=null;
+								moves=10;
+							};
+						},30);
+					}
+				},30);
+				
+			});
+		}();
+		window.onload=function(){
+			addPro();
+		}
+
+	</script>
+ </body>
+</html>

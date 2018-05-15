@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>self_introduce</title>
+	<link rel="stylesheet" href="css/index.css">
+	<script src="js/Chart.js"></script>
+ </head>
+ <body>
+  <div class="container">
+		<div class="st-container">
+			<input type="radio" name="radio-set" checked="checked" id="st-control-1">
+			<a href="#st-panel-1">Who am I</a>
+			<input type="radio" name="radio-set" id="st-control-2">
+			<a href="#st-panel-2">What do I like</a>
+			<input type="radio" name="radio-set" id="st-control-3">
+			<a href="#st-panel-3">What can I do</a>
+			<input type="radio" name="radio-set" id="st-control-4">
+			<a href="#st-panel-4">What I believe</a>
+
+			<div class="st-scroll">
+				<section class="st-panel" id="st-panel-1">
+					<svg id="s1" width="100%" height="100%"></svg>
+					<h2>
+						Hi there,this is Zeratul!<br>
+						<span>你好，我叫王泽！</span>
+					</h2>
+					<img src="imgs/me.png" title="me">
+				</section>
+				<section class="st-panel" id="st-panel-2">
+					<h2>喜欢的事情</h2>
+					<input id="picCheck-1" class="picCheck" type="checkbox" id="st-control-1">
+					<div><img src="imgs/mine_1.jpg" title=""></div>
+					<input id="picCheck-2" class="picCheck" type="checkbox" id="st-control-1">
+					<div><img src="imgs/mine_2.jpg" title=""></div>
+					<input id="picCheck-3" class="picCheck" type="checkbox" id="st-control-1">
+					<div><img src="imgs/mine_3.jpg" title=""></div>
+					<input id="picCheck-4" class="picCheck" type="checkbox" id="st-control-1">
+					<div><img src="imgs/mine_4.jpg" title=""></div>
+					<input id="picCheck-5" class="picCheck" type="checkbox" id="st-control-1">
+					<div><img src="imgs/mine_5.jpg" title=""></div>
+					<input id="picCheck-6" class="picCheck" type="checkbox" id="st-control-1">
+					<div><img src="imgs/mine_6.jpg" title=""></div>
+					<i></i>
+				</section>
+				<section class="st-panel" id="st-panel-3">
+					<h2>我能干点啥</h2>
+					<div class="skills">
+						<canvas id="mySkills" width="100%" height="100%"></canvas>
+					</div>
+					<div class="pro">
+						<a href="../pj_sy/home.html"><div id="pro_1"><img src="imgs/pro_2.jpg" title="舒遥"><span>舒遥汽车用品</span></div></a>
+						<a href="../pj_2048/2048.html"><div id="pro_2"><img src="imgs/pro_1.jpg" title="2048"><span>2048.js</span></div></a>
+						<a href="../pj_tetris/tetris.html"><div id="pro_3"><img src="imgs/pro_3.jpg" title="tetris"><span>俄罗斯方块.js</span></div></a>
+						<a href="../pj_airwar/airwar.html"><div id="pro_4"><img src="imgs/pro_4.jpg" title="airwar"><span>飞机大战</span></div></a>
+					</div>
+					<p>more...</p>
+				</section>
+				<section class="st-panel" id="st-panel-4">
+					<h2>On the way to be the best</h2>
+					<p>走向牛逼的路上，从未放弃努力</p>
+				</section>				
+			</div>
+		</div>
+	</div>
+	<script src="js/main.js"></script>
+ </body>
+</html>

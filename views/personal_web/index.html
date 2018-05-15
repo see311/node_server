@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html ng-app="MSG">
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Zeratul</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+    <!-- IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 兼容国产浏览器的高速模式 -->
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body scroll="no">
+    <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav">
+        <div class="container">
+            <a href="#" class="navbar-brand">Zeratul</a>
+            <div class="navbar-header">
+                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <nav class="collapse navbar-collapse bs-navbar-collapse" style="overflow: hidden;">
+                <ul id="navbar" class="nav navbar-nav">
+                    <li class="active">
+                        <a href="#home">Home</a>
+                    </li>
+                    <li>
+                        <a href="#skills">Skills</a>
+                    </li>
+                    <li>
+                        <a href="#works">Works</a>
+                    </li>
+                    <!-- <li>
+                        <a href="#message">Message</a>
+                    </li> -->
+                    <!-- <li class="divider"></li> -->
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li title="返回旧版">
+                        <a href="pj/pj_self/index.html">To old version</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="container">
+        <div id="home" class="row">
+            <div class="content">
+                <div class="col-xs-12">
+                    <img class="img-circle center-block" src="imgs/me.jpg" alt="">
+                </div>
+                <div class="col-xs-12 text-center">
+                    <h1>Hi there, this is Zeratul</h1>
+                </div>
+                <div class="col-xs-12 text-center">
+                    <h2>你好，我是王泽</h2>
+                </div>
+            </div>
+        </div>
+        <div id="skills" class="row">
+            <div class="text-center title">
+                <h2>MY SKILLS</h2>
+                <hr>
+            </div>
+            <div class="row">
+                <div class="movable col-xs-12 col-md-4">
+                    <h3>HTML</h3>
+                    <div class="outer">
+                        <div class="inner" id="d1"></div>
+                    </div>
+                </div>
+                <div class="movable col-xs-12 col-md-4">
+                    <h3>CSS</h3>
+                    <div class="outer">
+                        <div class="inner" id="d2"></div>
+                    </div>
+                </div>
+                <div class="movable col-xs-12 col-md-4">
+                    <h3>JavaScript</h3>
+                    <div class="outer">
+                        <div class="inner" id="d3"></div>
+                    </div>
+                </div>
+                <div class="movable col-xs-12 col-md-4">
+                    <h3>JQuery</h3>
+                    <div class="outer">
+                        <div class="inner" id="d4"></div>
+                    </div>
+                </div>
+                <div class="movable col-xs-12 col-md-4">
+                    <h3>VUE</h3>
+                    <div class="outer">
+                        <div class="inner" id="d5"></div>
+                    </div>
+                </div>
+                <div class="movable col-xs-12 col-md-4">
+                    <h3>NodeJS...</h3>
+                    <div class="outer">
+                        <div class="inner" id="d6"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center">
+                <h2>Learning more...</h2>
+            </div>
+        </div>
+        <div id="works" class="row">
+            <div class="text-center title">
+                <h2>MY WORKS</h2>
+                <hr>
+            </div>
+            <div class="pro col-xs-12 col-md-6">
+                <div class="well">
+                    <a href="pj/pj_2048/2048.html">
+                        <img class="img-responsive center-block" src="imgs/pro_1.jpg" title="">
+                    </a>
+                </div>
+            </div>
+            <div class="pro col-xs-12 col-md-6">
+                <div class="well">
+                    <a href="pj/pj_sy/home.html">
+                        <img class="img-responsive center-block" src="imgs/pro_2.jpg" title="">
+                    </a>
+                </div>
+            </div>
+            <div class="pro col-xs-12 col-md-6">
+                <div class="well">
+                    <a href="pj/pj_tetris/tetris.html">
+                        <img class="img-responsive center-block" src="imgs/pro_3.jpg" title="">
+                    </a>
+                </div>
+
+            </div>
+            <div class="pro col-xs-12 col-md-6">
+                <div class="well">
+                    <a href="pj/pj_airwar/airwar.html">
+                        <img class="img-responsive center-block" src="imgs/pro_4.jpg" title="">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- <div id="message" ng-controller="MSGBord">
+            <div class="text-center title">
+                <h2>LEAVE A MESSAGE</h2>
+                <hr>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-xs-12">
+                    <form>
+                        <div class="form-group">
+                            <label class="sr-only" for="uname">昵称</label>
+                            <input class="form-control" type="text" id="uname" ng-model="nickname" placeholder="输入个昵称...">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="msg">留言</label>
+                            <textarea class="form-control" id="msg" rows="5" style="resize:none;" ng-model="content" placeholder="留个言..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="sub">提交</label>
+                            <input class="btn btn-success btn-block btn-lg" id="sub" ng-click="submit()" type="button" value="提交">
+                        </div>
+                        <div class="alert alert-danger" ng-show="hasContent">
+                            <strong>请输入内容</strong>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-xs-12">
+                    <dl class="dl-horizontal" ng-repeat="msg in msgs">
+                        <dt ng-bind="msg.nickname"></dt>
+                        <dd ng-bind="msg.content"></dd>
+                        <dd>
+                            <span ng-bind="'发布日期:'+(msg.date*1000 | date:'yyyy-MM-dd HH:mm:ss')"></span>
+                        </dd>
+                    </dl>
+                    <button class="btn btn-default btn-block btn-lg" ng-click="getMSG(i)" ng-bind="loading">加载中，请稍后</button>
+                </div>
+            </div>
+        </div> -->
+    </section>
+
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

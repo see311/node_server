@@ -1,0 +1,62 @@
+section{
+	width:1280px;
+	margin:0 auto;
+	font-family:'Microsoft YaHei';
+	position:relative;
+}
+section:before{
+	content:"";
+	display:table;
+}
+
+#products{
+	width:1040px;
+	height:auto;
+	margin:20px auto;
+	position:relative;
+}
+
+.preview{
+	width:260px;
+	height:390px;
+	background:#ddd;
+	display:inline-block;
+	cursor:pointer;
+	box-shadow:0 0 10px #666;
+	position:relative;
+	opacity:1;
+	transition:all .5s;
+}
+.preview:hover:before{
+	content:"";
+	position:relative;
+	display:block;
+	width:100%;
+	height:100%;
+	background:rgba(0,0,0,.2);
+}
+#text{
+	position:absolute;
+	left:300px;
+	z-index:10;
+	opacity:0;
+	transition:all 1.5s;
+	font-size:20px;
+}
+#text.show{
+	opacity:1;
+}
+#text #title{
+	font-size:30px;
+	font-weight:bold;
+	line-height:100px;
+}
+#back{
+	font-size:30px;
+	color:#1E5AAD;
+	display:none;
+	position:relative;
+	top:430px;
+	left:1000px;
+	cursor:pointer;
+}

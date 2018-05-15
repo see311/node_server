@@ -49,7 +49,7 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 
 app.get('/', function (req, res) {
-  res.render('index');
+  res.render('personal_web/index');
 });
 
 app.use('/wechat', require('./routes/wechat_handle'))
