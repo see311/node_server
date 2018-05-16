@@ -47,9 +47,9 @@ $(window).scroll(function () {
             }, 300)
         }
     }
-    if ($(this).scrollTop() >= ($('#message').offset().top - 500)) {
-        $('#navbar>li>a[href="#message"]').parent('li').addClass('active').siblings('.active').removeClass('active');
-    }
+    // if ($(this).scrollTop() >= ($('#message').offset().top - 500)) {
+    //     $('#navbar>li>a[href="#message"]').parent('li').addClass('active').siblings('.active').removeClass('active');
+    // }
 });
 
 // angular.module('MSG', ['ng']).controller('MSGBord', ['$scope', '$http', function ($scope, $http) {
