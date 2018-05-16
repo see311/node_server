@@ -15,7 +15,8 @@ var app = express();
 
 // 设置模板引擎
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('view engine', 'html');
+app.engine('html', require('ejs').__express);
 
 app.use(express.static('public'));
 app.use(express.static(path.join(__dirname, 'views/personal_web')));
