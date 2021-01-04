@@ -9,7 +9,7 @@
     "dev": "set PORT=8080 && nodemon server.js -- "
   },
   "dependencies": {
-    "axios": "^0.17.1",
+    "axios": "^0.21.1",
     "body-parser": "1.12.3",
     "body-parser-xml": "^1.1.0",
     "connect-timeout": "^1.7.0",
